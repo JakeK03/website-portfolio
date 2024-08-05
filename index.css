@@ -69,10 +69,10 @@ video {
 
 img {
   margin: auto;
-  width: 400px;
+  width: 600px;
   z-index: 3;
   position: absolute;
-  top: 48%;
+  top: 52%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -83,7 +83,7 @@ img {
   }
 }
 
-@media (min-width: 400px) {
+@media (max-width: 400px) {
   img {
     width: 300px;
   }
