@@ -95,14 +95,15 @@ ul {
 
 .text {
     margin-top: 1rem;
-    font-size: 3.5em;
+    font-size: 4.75em;
     font-family: DiatypeRegular;
     color: rgb(255, 255, 255);
     font-style: normal;
     padding-right: 16px;
     padding-left: 16px;
-    line-height: 3.15rem; /* 130% */
+    line-height: 95%; /* 130% */
     vertical-align: baseline;
+    height: 200px;
 }
 
 .name-style {
@@ -110,7 +111,7 @@ ul {
 }
 
 .headshot {
-    width: 3rem;
+    width: 4.25rem;
     height: auto;
     vertical-align: bottom;
     border: 1px solid rgb(255, 255, 255);
@@ -133,3 +134,26 @@ ul {
     color: blue;
     text-decoration: underline;
 }
+
+@media (max-width: 1200px) {
+    .text {
+      font-size: 3.5em;
+      line-height: 95%;
+    }
+    .headshot {
+        width: 3.25rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .text {
+      font-size: 2em;
+      line-height: 95%;
+    }
+    .headshot {
+        width: 1.8rem;
+    }
+    .main-headshot {
+        width: 10rem;
+    }
+  }
