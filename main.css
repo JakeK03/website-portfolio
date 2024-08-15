@@ -1,0 +1,135 @@
+@font-face {
+    font-family: FavoritMedium;
+    src: url(font_library/ABCFavorit-Medium-Trial.otf);
+}
+
+@font-face {
+    font-family: DiatypeRegular;
+    src: url(font_library/ABCDiatype-Regular-Trial.otf);
+}
+
+@font-face {
+  font-family: FavoritRegular;
+  src: url(font_library/ABCFavorit-Regular-Trial.otf);
+}
+
+@font-face {
+  font-family: FavoritBook;
+  src: url(font_library/ABCFavorit-Book-Trial.otf);
+}
+
+@font-face {
+    font-family: FrasaRegular;
+    src: url(font_library/FrasaTrials-Regular.otf);
+  }
+
+/* html {
+    border: 1px solid red;
+    height: 100%;
+    box-sizing: border-box;
+} */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    user-select: none;
+  }
+
+:any-link {
+    text-decoration: none;
+    color: black;
+}
+
+body {
+    background-color: rgb(42, 170, 89);
+    padding: 0;
+    margin: 0;
+}
+
+.site-nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1rem;
+    border: 0;
+    padding-right: 8px;
+    padding-left: 16px;
+}
+
+ul {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.name-header {
+    font-size: 1.4em;
+    font-family: DiatypeRegular;
+    color: rgb(255, 255, 255);
+    font-style: normal;
+    line-height: 26px; /* 130% */
+    /* padding-left: 8px; */
+}
+
+.about {
+    font-size: 1.4em;
+    font-family: DiatypeRegular;
+    color: rgb(255, 255, 255);
+    font-style: normal;
+    padding-left: 8px;
+    line-height: 26px; /* 130% */
+    pointer-events: none;
+    
+}
+
+.main-headshot {
+    width: 18rem;
+    margin-top: 1rem;
+    margin-left: 16px;
+    /* padding-left: 16px; */
+    height: auto;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 4px;
+}
+
+.text {
+    margin-top: 1rem;
+    font-size: 3.5em;
+    font-family: DiatypeRegular;
+    color: rgb(255, 255, 255);
+    font-style: normal;
+    padding-right: 16px;
+    padding-left: 16px;
+    line-height: 3.15rem; /* 130% */
+    vertical-align: baseline;
+}
+
+.name-style {
+    color: rgb(250, 165, 29);
+}
+
+.headshot {
+    width: 3rem;
+    height: auto;
+    vertical-align: bottom;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 2px;
+}
+
+.school-style {
+    /* color: rgb(239, 27, 55); */
+    color: #806ADF
+}
+
+.insta-link {
+    font-style: none;
+    color: blue;
+    text-decoration: underline;
+}
+
+.email-link {
+    font-style: none;
+    color: blue;
+    text-decoration: underline;
+}

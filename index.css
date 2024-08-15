@@ -11,8 +11,10 @@
 
 body {
     background-color: rgb(255, 255, 255);
-  justify-content: center;
-  align-items: center;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
 }
 
 @font-face {
@@ -21,8 +23,18 @@ body {
 }
 
 @font-face {
-    font-family: MaleoI;
-    src: url(Maleo-Trials/webfonts/MaleoTrials-MediumItalic.woff);
+    font-family: DiatypeRegular;
+    src: url(font_library/ABCDiatype-Regular-Trial.otf);
+}
+
+@font-face {
+  font-family: FavoritRegular;
+  src: url(font_library/ABCFavorit-Regular-Trial.otf);
+}
+
+@font-face {
+  font-family: FavoritBook;
+  src: url(font_library/ABCFavorit-Book-Trial.otf);
 }
 
 .wrapper {
@@ -96,8 +108,28 @@ h1 {
     opacity: 90%;
 }
 
+.name-header {
+    font-size: 1.4em;
+    font-family: DiatypeRegular;
+    color: rgb(22, 22, 22);
+    font-style: normal;
+    line-height: 26px; /* 130% */
+    /* padding-left: 8px; */
+}
+
 h1:hover {
     color:rgb(203, 247, 133);
+}
+
+.site-nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1rem;
+    border: 0;
+    padding-left: 16px;
+    padding-right: 8px;
 }
 
 @media (max-width: 900px) {
@@ -148,29 +180,6 @@ h1:hover {
       left: 65%;
     }
   }
-
-.about {
-    margin-left: 15%;
-    position: absolute;
-    -webkit-animation: 1;
-    -webkit-animation-name: run;
-    -webkit-animation-duration: 3.5s;
-    animation-fill-mode: forwards;
-}
-
-.flex-container {
-    display: flex;
-    flex-direction: column;
-}
-
-h2 {
-    font-family: Maleo;
-    font-size: 3rem;
-    color: rgb(0, 0, 0);
-    margin: -1.5rem;
-    padding-left: 200px;
-}
-  
   .start-screen {
     position: absolute;
     font-size: 5vmin;
