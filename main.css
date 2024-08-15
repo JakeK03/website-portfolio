@@ -113,6 +113,7 @@ ul {
 .headshot {
     width: 4.25rem;
     height: auto;
+    object-fit: cover;
     vertical-align: bottom;
     border: 1px solid rgb(255, 255, 255);
     border-radius: 2px;
@@ -145,7 +146,7 @@ ul {
     }
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 400px) {
     .text {
       font-size: 1.4em;
       line-height: 95%;
