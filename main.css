@@ -147,11 +147,11 @@ ul {
 
   @media (max-width: 600px) {
     .text {
-      font-size: 2em;
+      font-size: 1.4em;
       line-height: 95%;
     }
     .headshot {
-        width: 1.8rem;
+        width: 1.3rem;
     }
     .main-headshot {
         width: 10rem;
