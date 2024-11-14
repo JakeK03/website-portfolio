@@ -1,56 +1,43 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>KUERBIS</title>
-    <link rel="stylesheet" href='index.css'>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="photos/pixel1-03.png" />
-    <meta name='viewport' content='width=device-width, initial scale=1.0' />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jake Kuerbis</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 </head>
-
 <body>
-    
-    <!-- <header class="site-nav" id="site-header2">
+    <header class="header">
+        <!-- Title as a link -->
+        <a href="main.html" class="header-title">KÜERBIS</a>
         
-    </header> -->
-    <main>
+        <!-- Image as a link -->
+        <a href="about.html" class="header-image">
+          <img src="photos/OREGON_Page_3.png" alt="Passport Image" />
+        </a>
+      </header>
 
-        <nav class="site-nav">
-            <a class="name-header" href="main.html">JAKE KUERBIS</a>
-        </nav>
-
-        <div class="wrapper">
-            <div class="color">
-                
-                    <h1 class="JK"><a href="photos/original_39f8f071216da342967ae3272fc108b3.jpg">UNDER CONSTRUCTION</a></h1>
-               
-            </div>
-            <!-- <div class="rockvideo">
-                <video autoplay loop muted>
-                    <source src="videos/0150.mp4">
-                </video>
-            </div> -->
-       </div>
-       <img src="videos/0116.gif">
-
+  <main id="header">
+    <h1 id="page-title"></h1>
     
-        <!-- <div class="flex-container">
-            <ul id='footer'>
-                <a href="test2.html">
-                    <li class="work">WORK</li></a>
-                    <li class="about">ABOUT</li>
-            </ul>
-        </div> -->
-
+    <div id="webcam-container">
     
-    </main>
+      <img id="webcam" src="https://www.timberlinelodge.com/snowcameras//palmerbottom.jpg?nocache=1729260542" alt="Live Webcam">
+    </div>
 
-    <footer>
-    
-    </footer>
+    <!-- Live Stream Video Section -->
+  <!-- <div class="video-container">
+    <video id="live-stream" autoplay muted playsinline loop></video>
+  </div> -->
+</main>
 
+  <footer>
+    <div id="about">Status: Online</div>
+    <div id="powered-by"><a class="powered-by" href="description.html">Mount Hood, Oregon / Circadian Rythmn</a></div>
+    <div id="clock"></div>
+  </footer>  
 
+  <script src="script.js"></script>
 </body>
-
 </html>
