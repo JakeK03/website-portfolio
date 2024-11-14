@@ -1,0 +1,122 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+  }
+  
+  body {
+    background-color: black;
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding-top: 10px; /* Add padding to prevent content overlap with fixed header */
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 0.5;
+    }
+  }
+
+  a {
+    color: white;
+  }
+
+  p {
+    margin-top: 10px;
+    font-size: 2rem;
+    padding: 0px 20px;
+    text-align: left;
+    font-weight: normal;
+    margin-bottom: 40px;
+  }
+
+  .underline {
+    text-decoration: underline;
+  }
+
+  .name-style {
+    color: rgba(255, 167, 25, 1);
+  }
+
+  .school-style {
+    color: rgba(128, 106, 223, 1);
+  }
+
+  .insta-link {
+    color: rgba(9, 58, 255, 1);
+  }
+
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 6px 6px;
+    animation: fadeIn 1s ease;
+  }
+  
+  .header-title {
+    font-size: 1.35rem;
+    font-weight: normal;
+    color: #ffffff;
+    text-decoration: none;
+  }
+  
+  .header-image img {
+    height: 60px; /* Adjust size as needed */
+    width: auto;
+    border-radius: 4px;
+  }
+
+  #webcam-container {
+    position: absolute; /* Position absolutely within the webcam container */
+    top: 49.5%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Center text within the container */
+    width: 100%;
+    max-width: 500px;
+    overflow: hidden;
+    z-index: -4;
+    margin-top: 0px;
+    opacity: 50%;
+    animation: fadeIn 1s ease; /* Ensure the image stays within the container */
+  }
+  
+  #webcam {
+    width: 100%;
+    height: auto;
+    display: block;
+
+  }
+
+  footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    color: white;
+    background: black; /* Default background */
+  }
+  
+  #clock-temperature, #about, #powered-by {
+    color: white;
+  }
+  
+  #powered-by {
+    text-decoration: underline;
+  }
