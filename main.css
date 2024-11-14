@@ -1,163 +1,267 @@
 @font-face {
-    font-family: FavoritMedium;
-    src: url(font_library/ABCFavorit-Medium-Trial.otf);
-}
-
-@font-face {
     font-family: DiatypeRegular;
-    src: url(font_library/ABCDiatype-Regular-Trial.otf);
-}
-
-@font-face {
-  font-family: FavoritRegular;
-  src: url(font_library/ABCFavorit-Regular-Trial.otf);
-}
-
-@font-face {
-  font-family: FavoritBook;
-  src: url(font_library/ABCFavorit-Book-Trial.otf);
-}
-
-@font-face {
-    font-family: FrasaRegular;
-    src: url(font_library/FrasaTrials-Regular.otf);
+    src: url(font_library/ABCDiatype-Regular-Trial.woff2);
   }
-
-/* html {
-    border: 1px solid red;
-    height: 100%;
-    box-sizing: border-box;
-} */
-
-*, *::before, *::after {
-    box-sizing: border-box;
-    user-select: none;
-  }
-
-:any-link {
-    text-decoration: none;
-    color: black;
-}
-
-body {
-    background-color: rgb(42, 170, 89);
-    padding: 0;
+  
+  * {
     margin: 0;
-}
-
-.site-nav {
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+  }
+  
+  body {
+    background-color: black;
+    color: white;
+    text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    flex-shrink: 0;
-    margin-top: 1rem;
-    border: 0;
-    padding-right: 8px;
-    padding-left: 16px;
-    position: sticky;
-    top: 1rem;
-}
-
-ul {
+    min-height: 100vh;
+    padding-top: 10px; /* Add padding to prevent content overlap with fixed header */
+  }
+  
+  a {
+    color: white;
+    font-family: DiatypeRegular;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     display: flex;
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-.name-header {
-    font-size: 1.4em;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 6px 6px;
+    animation: fadeIn 1s ease;
+  }
+  
+  .header-title {
     font-family: DiatypeRegular;
-    color: rgb(255, 255, 255);
-    font-style: normal;
-    line-height: 26px; /* 130% */
-    /* padding-left: 8px; */
-}
-
-.about {
-    font-size: 1.4em;
-    font-family: DiatypeRegular;
-    color: rgb(255, 255, 255);
-    font-style: normal;
-    padding-left: 8px;
-    line-height: 26px; /* 130% */
-    pointer-events: none;
-    
-}
-
-.main-headshot {
-    width: 18rem;
-    margin-top: 1rem;
-    margin-left: 16px;
-    /* padding-left: 16px; */
-    height: auto;
-    border: 1px solid rgb(255, 255, 255);
+    font-size: 1.35rem;
+    font-weight: normal;
+    color: #ffffff;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    color: rgba(9, 58, 255, 1);
+  }
+  
+  .header-image img {
+    height: 60px; /* Adjust size as needed */
+    width: auto;
     border-radius: 4px;
-    position: sticky;
-}
-
-.text {
-    margin-top: 1rem;
-    font-size: 5.5em;
-    font-family: DiatypeRegular;
-    color: rgb(255, 255, 255);
-    font-style: normal;
-    padding-right: 16px;
-    padding-left: 16px;
-    line-height: 95%; /* 130% */
-    vertical-align: baseline;
-    height: 200px;
-}
-
-.name-style {
-    color: rgb(250, 165, 29);
-}
-
-.headshot {
-    width: 5rem;
-    height: auto;
-    object-fit: cover;
-    vertical-align: bottom;
-    border: 1px solid rgb(255, 255, 255);
-    border-radius: 2px;
-}
-
-.school-style {
-    /* color: rgb(239, 27, 55); */
-    color: #806ADF
-}
-
-.insta-link {
-    font-style: none;
+  }
+  
+  #header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  
+  /* Font size for the daytime message */
+  .daytime-message {
+    font-size: 4rem;
+  }
+  
+  /* Style for 'Jake Kuerbis' text in orange */
+  .highlight-orange {
+    color: orange;
+  }
+  
+  /* Style for 'Parsons School of Design' text in purple */
+  .highlight-purple {
+    color: purple;
+  }
+  
+  /* Style for 'insta' and 'email' text in blue with underline */
+  .highlight-blue {
     color: blue;
     text-decoration: underline;
-}
-
-.email-link {
-    font-style: none;
-    color: blue;
+    cursor: pointer;
+  }
+  
+  /* Style for hover effects (optional) */
+  .highlight-blue.link:hover {
+    text-decoration: none;
+  }
+  
+  
+  #page-titletwo {
+    position: absolute; /* Position absolutely within the webcam container */
+      top: 50%; /* Center vertically */
+      left: 50%; /* Center horizontally */
+      transform: translate(-50%, -50%); /* Adjust to center */
+      color: white; /* Set text color, adjust as necessary */
+       /* Adjust font size */
+      font-weight: 300;
+      font-family: DiatypeRegular;
+      line-height: 7rem;
+      width: 100%;
+      /* background-color: blue; */
+      z-index: 10; /* Ensure it is above the webcam image */
+      transition: opacity 1s ease;
+      animation: fadeIn 1s ease;
+  }
+  
+  
+  .fade-out {
+    opacity: 0; /* Hide the header with full transparency */
+  }
+  
+  
+  /* General styles for columns */
+  .columns-container {
+    display: flex;
+    background-color: rgb(133, 132, 123);
+    width: 100vw;
+    height: calc(100vh - 20px);
+    overflow: hidden;
+    position: absolute; /* For the absolute positioning of the right column */
+  }
+  
+  .left-column {
+    bottom: 0;
+    overflow: hidden;
+    /* overflow-y: scroll; */
+    width: 15rem;
+    padding: 10px;
+    overflow-y: auto;
+    color: white;
+    text-align: left;
+  }
+  
+  .left-column p,
+  .left-column ul {
+      margin: 0;
+      padding: 0.5rem 0;
+  }
+  
+  .left-column ul {
+      list-style-type: none;
+      padding-left: 0; /* Remove indentation */
+  }
+  
+  .left-column ul li {
+      padding: 0.2rem 0;
+  }
+  
+  .left-column ul li a {
+      text-decoration: underline;
+      color: white;
+  }
+  
+  .highlight-orange {
+      color: orange;
+  }
+  
+  .highlight-purple {
+      color: rgb(136, 29, 208);
+  }
+  
+  .highlight-blue {
+      color: rgb(33, 37, 255);
+      text-decoration: underline;
+  }
+  
+  .highlight-green {
+      color: rgb(7, 181, 7);
+  }
+  
+  .underline {
+      text-decoration: underline;
+  }
+  
+  .center-column {
+    display: grid;
+    gap: 10px;
+    width: 50rem;
+    /* background-color: #2a2a2a; */
+    padding: 1rem;
+    overflow-y: auto;
+    color: white;
+  }
+  
+  img {
+    width: 100%;
+  }
+  
+  .right-column {
+    position: absolute;
+    height: calc(100vh - 20px);
+      bottom: 0;
+      overflow: hidden;
+      overflow-y: scroll;
+      padding: 0px 8px;
+    width: 10rem;
+    padding: 1rem;
+    overflow-y: auto;
+    color: white;
+    right: 0;
+  }
+  
+  footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    color: white;
+    background: black; /* Default background */
+  }
+  
+  #clock-temperature, #about, #powered-by {
+    color: white;
+  }
+  
+  #powered-by {
     text-decoration: underline;
-}
-
-@media (max-width: 1000px) {
-    .text {
-      font-size: 3.5em;
-      line-height: 95%;
+  }
+  
+  .powered-by:hover {
+    color: rgba(128, 106, 223, 1);
+  }
+  
+  ::selection {
+    color: blue;
+  }
+  
+  /* Change layout to two columns when screen width exceeds 1000px */
+  @media (min-width: 1100px) {
+    .center-column {
+      grid-template-columns: 1fr 1fr; /* Two equal-width columns */
     }
-    .headshot {
-        width: 3.25rem;
+  
+    .center-column img {
+      width: 100%; /* Ensure images fit within grid columns */
     }
   }
 
-  @media (max-width: 400px) {
-    .text {
-      font-size: 1.4em;
-      line-height: 95%;
+  /* @media (max-width: 750px) {
+    #page-titletwo {
+        font-size: 70%;
+        line-height: 5rem;
     }
-    .headshot {
-        width: 1.3rem;
-    }
-    .main-headshot {
-        width: 10rem;
-    }
-  }
+  } */
+  
+  /* Responsive adjustments for right column at 1000px width */
+  
+  
