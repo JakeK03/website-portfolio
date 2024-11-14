@@ -268,7 +268,12 @@ footer {
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 430px) {
+
+  body {
+    
+    max-height: 100vh; /* Add padding to prevent content overlap with fixed header */
+  }
 
   #page-title {
     position: absolute; /* Position absolutely within the webcam container */
@@ -278,7 +283,7 @@ footer {
       color: white; /* Set text color, adjust as necessary */
       font-size: 6rem; /* Adjust font size */
       font-weight: normal;
-      line-height: 22rem;
+      /* line-height: 22rem; */
       width: 100%;
   }
 
