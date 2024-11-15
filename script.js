@@ -1,6 +1,6 @@
 
 
-const temperatureApiKey = '8b1a5b132498779f6d84d14b4533d1f5'; // Replace with your OpenWeatherMap API key
+const temperatureApiKey = config.MY_KEY; // Replace with your OpenWeatherMap API key
 const weatherLatitude = 45.3032; // Timberline Lodge, Oregon
 const weatherLongitude = -121.7593;
 const latitude = 45.3032; // Government Camp, Oregon
