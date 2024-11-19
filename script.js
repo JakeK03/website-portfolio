@@ -54,7 +54,7 @@ function updateStatus() {
 
     // Determine if it's day or night
     if (now >= sunrise && now < sunset) {
-        aboutElement.innerText = "Status: Online";
+        aboutElement.innerText = "Status: Updating";
     } else {
         // Calculate time until next sunrise
         let nextSunrise = new Date(sunrise);
