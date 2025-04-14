@@ -62,7 +62,7 @@ const colorDarkBlue = [0, 0, 139];
 
     .then(response => response.json())
     .then(data => {
-      sunrise = new Date(data.daily[0].sunrise * 1000 - 1 * 60 * 1000);
+      sunrise = new Date(data.daily[0].sunrise * 1000);
       sunset = new Date(data.daily[0].sunset * 1000);
 
       
@@ -221,6 +221,20 @@ if (elapsed < segment) {
   extraText.classList.remove('show');
     });
     
+    const headerTitle = document.querySelector('.header-title');
+    const webcamImage = document.getElementById('webcam');
+    
+    const originalWebcamSrc = webcamImage.src;
+    const newImageSrc = 'photos/BRW0C96E696CA5B_000532.png'; // <-- update with your correct path
+    
+    headerTitle.addEventListener('mouseenter', () => {
+      webcamImage.src = newImageSrc;
+    });
+    
+    headerTitle.addEventListener('mouseleave', () => {
+      webcamImage.src = originalWebcamSrc;
+    });
+
       fetchSunTimes();
       fetchTemperature();
       updateClock();
@@ -228,5 +242,6 @@ if (elapsed < segment) {
 
       setInterval(updateClock, 1000);
       setInterval(fetchTemperature, 300000);
+      setInterval(updateBackgroundColor, 1000);
       
     });
