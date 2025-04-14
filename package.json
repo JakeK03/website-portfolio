@@ -1,0 +1,23 @@
+{
+  "name": "website-portfolio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JakeK03/website-portfolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JakeK03/website-portfolio/issues"
+  },
+  "homepage": "https://github.com/JakeK03/website-portfolio#readme",
+  "dependencies": {
+    "axios": "^1.8.4"
+  }
+}
