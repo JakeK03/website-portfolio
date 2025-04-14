@@ -30,9 +30,9 @@
   }
 
   p {
-    margin-top: 10px;
-    font-size: 2rem;
-    padding: 0px 20px;
+    margin-top: 24px;
+    /* font-size: 2rem; */
+    padding: 0px 8px;
     text-align: left;
     font-weight: normal;
     margin-bottom: 40px;
@@ -85,7 +85,7 @@
     left: 50%; /* Center horizontally */
     transform: translate(-50%, -50%); /* Center text within the container */
     width: 100%;
-    max-width: 500px;
+    max-width: 325px;
     overflow: hidden;
     z-index: -4;
     margin-top: 0px;
