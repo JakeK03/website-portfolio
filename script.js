@@ -190,6 +190,7 @@ if (elapsed < segment) {
     const backgroundImage = document.getElementById('background-image');
 
     const extraText = document.getElementById('extra-text');
+    const extraImg = document.getElementById('extra-img');
     const imagePool = [
       'photos/mt_hood_series/IMG_2035.jpeg',
       'photos/mt_hood_series/IMG_2499.jpeg',
@@ -212,6 +213,8 @@ if (elapsed < segment) {
       
       const extraText = document.getElementById('extra-text');
   extraText.classList.add('show');
+  const extraImg = document.getElementById('extra-img');
+  extraImg.classList.add('show');
     });
     
     overlay.addEventListener('mouseleave', () => {
@@ -219,6 +222,8 @@ if (elapsed < segment) {
       
       const extraText = document.getElementById('extra-text');
   extraText.classList.remove('show');
+  const extraImg = document.getElementById('extra-img');
+  extraImg.classList.remove('show');
     });
     
     const headerTitle = document.querySelector('.header-title');
