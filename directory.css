@@ -1,0 +1,150 @@
+@font-face {
+    font-family: FavoritMedium;
+    src: url(font_library/ABCFavorit-Medium-Trial.otf);
+}
+
+@font-face {
+    font-family: DiatypeRegular;
+    src: url(font_library/ABCDiatype-Regular-Trial.woff2);
+}
+
+@font-face {
+  font-family: FavoritRegular;
+  src: url(font_library/ABCFavorit-Regular-Trial.otf);
+}
+
+@font-face {
+  font-family: FavoritBook;
+  src: url(font_library/ABCFavorit-Book-Trial.otf);
+}
+
+@font-face {
+    font-family: FrasaRegular;
+    src: url(font_library/FrasaTrials-Regular.otf);
+  }
+
+@font-face {
+    font-family: RoumaldRoman;
+    src: url(font_library/EKRoumaldTest-Roman.ttf);
+  }
+
+  @font-face {
+    font-family: OldeEnglish;
+    src: url(font_library/OldeEnglish.ttf);
+  }
+
+/* html {
+    border: 1px solid red;
+    height: 100%;
+    box-sizing: border-box;
+} */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    user-select: none;
+  }
+
+:any-link {
+    text-decoration: none;
+    color: black;
+}
+
+body {
+    background-color: rgb(0, 0, 0);
+    padding: 0;
+    margin: 0;
+    /* background-image: url(photos/46496_20384_BI17-WGS84.tif);
+    background-position-y: 60%; */
+}
+
+.name {
+    color: white;
+    font-size: 17vw;
+    font-family: DiatypeRegular;
+    font-weight: normal;
+    text-align: center;
+    justify-content: center;
+    margin: auto;
+    width: fit-content;
+    padding: 5px;
+    line-height: 80%;
+}
+
+.namewrapper {
+    /* position: absolute; */
+    z-index: 2;
+    /* top: 1vw; */
+    /* left: 50%; */
+    /* transform: translate(-50%, -50%); */
+    /* width: 100%; */
+}
+
+.one {
+    width: 26vw;
+}
+
+.wrapper {
+    padding: 8px;
+    display: flex;
+}
+
+.numberone {
+    color: white;
+    font-size: 1.2em;
+    font-family: DiatypeRegular;
+    font-weight: normal;
+    text-align: center;
+    border: 2px white solid;
+    border-radius: 4px;
+    padding: 4px;
+    margin: 4px;
+}
+
+@media (min-width: 1100px) {
+    .name {
+      font-size: 1.8em;
+      float: left;
+      text-align: left;
+      justify-content: left;
+      margin: 6px;
+    }
+    .namewrapper {
+        
+        margin: 0;
+        justify-content: left;
+        display: flex;
+        text-align: left;
+    }
+  }
+
+  #container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+.image-wrapper {
+    position: absolute;
+    text-align: center;
+    padding: 10px;
+
+}
+
+.image-wrapper img {
+    display: block;
+    width: 18vw;
+    object-fit: cover;
+}
+
+.number {
+    margin-top: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    font-size: 1.2em;
+    font-family: DiatypeRegular;
+    font-weight: normal;
+    text-align: center;
+    color: white;
+    border: 1px solid white;
+    border-radius: 6px;
+}
