@@ -104,6 +104,39 @@ p {
 img {
   width: 100%;
   height: auto;
+  
+}
+
+#extra-img {
+  opacity: 0;
+transition: opacity 0.1s ease;
+max-width: 100px;
+position: fixed;
+  /* top: 0; */
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items:baseline;
+  padding: 6px 6px;
+  
+}
+
+#extra-img.show {
+  opacity: 1;
+}
+
+#suncaptureone {
+  /* padding-bottom: 6px; */
+}
+
+#suncapturetwo {
+  padding-top: 6px;
+}
+
+#suncapturethree {
+  padding-top: 6px;
 }
 
 .box {
