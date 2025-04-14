@@ -50,6 +50,7 @@ a {
   align-items: flex-start;
   padding: 6px 6px;
   animation: fadeIn 1s ease;
+  background-color: white;
 }
 
 .header-title {
@@ -73,11 +74,13 @@ a:hover {
 
 #main {
   display: flex;
+  /* flex: 1; */
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
-  width: 100%;
+  /* margin-bottom: 20px; */
+  /* min-height: 100vh; */
+  
 }
 
 p {
@@ -91,6 +94,11 @@ p {
   padding: 6px 6px;
   /* mix-blend-mode:overlay; */
   z-index: 6;
+}
+
+.selected-projects {
+  color: black;
+  /* text-decoration: none; */
 }
 
 img {
@@ -236,6 +244,7 @@ select {
   z-index: 4;
   background: transparent;
   cursor: pointer;
+  /* pointer-events: none; */
 }
 header, footer, #clock, #about, #powered-by {
   position: relative;
