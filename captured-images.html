@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Captured Webcam Images</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .image-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .image-container img {
+            width: 30%;
+            margin: 0 10px;
+            border: 2px solid #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Captured Images from Government Camp Webcam</h1>
+    <div class="image-container">
+        <img id="sunriseImage" src="" alt="Sunrise Capture">
+        <img id="middayImage" src="" alt="Midday Capture">
+        <img id="sunsetImage" src="" alt="Sunset Capture">
+    </div>
+
+    <script>
+        // Retrieve captured images from localStorage and display them
+        document.getElementById("sunriseImage").src = localStorage.getItem("sunriseImage") || "";
+        document.getElementById("middayImage").src = localStorage.getItem("middayImage") || "";
+        document.getElementById("sunsetImage").src = localStorage.getItem("sunsetImage") || "";
+    </script>
+</body>
+</html>
