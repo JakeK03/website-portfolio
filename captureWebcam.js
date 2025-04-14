@@ -19,7 +19,7 @@ async function captureWebcamImage(timeOfDay) {
     const writer = fs.createWriteStream(filepath);
     response.data.pipe(writer);
 
-    writer.on('finish', () => console.log(`✅Image saved: ${filepath}`));
+    writer.on('finish', () => console.log(`Image saved: ${filepath}`));
     writer.on('error', (err) => console.error(' Error writing image:', err));
   } catch (error) {
     console.error(' Error capturing webcam image:', error.message);
@@ -28,3 +28,21 @@ async function captureWebcamImage(timeOfDay) {
 
 const timeOfDay = process.argv[2] || 'snapshot';
 captureWebcamImage(timeOfDay);
+
+// const fs = require('fs');
+// const https = require('https');
+// const path = require('path');
+
+// const webcamUrl = 'https://www.timberlinelodge.com/snowcameras//palmerbottom.jpg?nocache=' + Date.now();
+// const outputPath = path.join(__dirname, 'images', `capture-${Date.now()}.jpg`);
+
+// https.get(webcamUrl, (res) => {
+//   const fileStream = fs.createWriteStream(outputPath);
+//   res.pipe(fileStream);
+//   fileStream.on('finish', () => {
+//     fileStream.close();
+//     console.log(' Webcam image captured:', outputPath);
+//   });
+// }).on('error', (err) => {
+//   console.error(' Error capturing webcam image:', err.message);
+// });
