@@ -405,7 +405,7 @@ footer {
   padding: 0 10px;
   color: white;
   background: black;
-  
+  z-index: 10;
 }
 
 #clock-temperature, #about, #powered-by {

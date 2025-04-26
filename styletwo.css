@@ -90,7 +90,7 @@ p {
   top: 1.5rem;
   left: 6px;
   right: 6px;
-  width: 40%;
+  width: auto;
   padding: 6px 6px;
   /* mix-blend-mode:overlay; */
   z-index: 6;
@@ -416,7 +416,7 @@ footer {
   padding: 0 10px;
   color: white;
   background: black;
-  
+  z-index: 10;
 }
 
 #clock-temperature, #about, #powered-by {
