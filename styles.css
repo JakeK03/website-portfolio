@@ -490,12 +490,26 @@ footer {
 
 @media (max-width: 400px) {
   #webcam-container {
-    position: relative; /* Position relative to allow absolute positioning of child elements */
-    text-align: center; /* Center text within the container */
+    transition: opacity 0.1s ease;
+max-width: 100px;
+position: fixed;
+  /* top: 0; */
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items:baseline;
+  padding: 6px 6px;
+  }
+
+  p {
     width: 100%;
-    max-width: 200px;
-    overflow: hidden;
-    animation: fadeIn 1s ease; /* Ensure the image stays within the container */
+    margin-right: 6px;
+  }
+
+  #background-image-container {
+    display: block;
   }
 }
 
