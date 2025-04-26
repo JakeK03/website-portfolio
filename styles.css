@@ -446,11 +446,11 @@ footer {
   }
 }
 
-@media (max-width: 650px) {
+@media (max-width: 600px) {
 
   body {
     
-    max-height: 100vh; /* Add padding to prevent content overlap with fixed header */
+    min-height: 100vh; /* Add padding to prevent content overlap with fixed header */
   }
 
   #page-title {
@@ -469,7 +469,7 @@ footer {
     position: relative; /* Position relative to allow absolute positioning of child elements */
     text-align: center; /* Center text within the container */
     width: 100%;
-    max-width: 350px;
+    max-width: 325px;
     overflow: hidden;
     animation: fadeIn 1s ease; /* Ensure the image stays within the container */
   }
@@ -485,6 +485,17 @@ footer {
     padding: 0 10px;
     color: white;
     background: black; /* Default background */
+  }
+}
+
+@media (max-width: 400px) {
+  #webcam-container {
+    position: relative; /* Position relative to allow absolute positioning of child elements */
+    text-align: center; /* Center text within the container */
+    width: 100%;
+    max-width: 200px;
+    overflow: hidden;
+    animation: fadeIn 1s ease; /* Ensure the image stays within the container */
   }
 }
 
