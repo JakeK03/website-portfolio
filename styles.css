@@ -89,7 +89,7 @@ p {
   position: fixed;
   top: 1.5rem;
   left: 6px;
-  right: 0;
+  right: 6px;
   width: 40%;
   padding: 6px 6px;
   /* mix-blend-mode:overlay; */
@@ -490,22 +490,11 @@ footer {
 
 @media (max-width: 400px) {
   #webcam-container {
-    transition: opacity 0.1s ease;
-max-width: 100px;
-position: fixed;
-  /* top: 0; */
-  left: 0;
-  right: 0;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  align-items:baseline;
-  padding: 6px 6px;
+    display: block;
   }
 
   p {
-    width: 100%;
-    margin-right: 6px;
+    width: auto;
   }
 
   #background-image-container {
