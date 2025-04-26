@@ -1,110 +1,484 @@
+@font-face {
+  font-family: DiatypeRegular;
+  src: url(font_library/ABCDiatype-Regular-Trial.woff2);
+}
+
+@font-face {
+  font-family: DiatypeLight;
+  src: url(font_library/ABCDiatype-Light-Trial.woff2);
+}
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  background-color: rgb(255, 255, 255);
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  padding-top: 10px; /* Add padding to prevent content overlap with fixed header */
+}
+
+a {
+  color: white;
+  font-family: DiatypeRegular;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
+  to {
+    opacity: 1;
+  }
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 6px 6px;
+  animation: fadeIn 1s ease;
+  background-color: white;
+}
+
+.header-title {
+  font-family: DiatypeRegular;
   
-  body {
-    background-color: black;
-    color: white;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    min-height: 100vh;
-    padding-top: 10px; /* Add padding to prevent content overlap with fixed header */
-  }
+  font-weight: normal;
+  color: #000000;
+  text-decoration: none;
+  text-decoration: underline;
+}
 
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 0.5;
-    }
-  }
+a:hover {
+  color: rgba(9, 58, 255, 1);
+}
 
-  a {
-    color: white;
-  }
+.header-image img {
+  height: 60px; /* Adjust size as needed */
+  width: auto;
+  border-radius: 4px;
+}
 
-  p {
-    margin-top: 24px;
-    /* font-size: 2rem; */
-    padding: 0px 8px;
-    text-align: left;
-    font-weight: normal;
-    margin-bottom: 40px;
-  }
-
-  .underline {
-    text-decoration: underline;
-  }
-
-  .name-style {
-    color: rgba(255, 167, 25, 1);
-  }
-
-  .school-style {
-    color: rgba(128, 106, 223, 1);
-  }
-
-  .insta-link {
-    color: rgba(9, 58, 255, 1);
-  }
-
-  .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 6px 6px;
-    animation: fadeIn 1s ease;
-  }
+#main {
+  display: flex;
+  /* flex: 1; */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* margin-bottom: 20px; */
+  /* min-height: 100vh; */
   
-  .header-title {
-    font-size: 1.35rem;
-    font-weight: normal;
-    color: #ffffff;
-    text-decoration: none;
-  }
-  
-  .header-image img {
-    height: 60px; /* Adjust size as needed */
-    width: auto;
-    border-radius: 4px;
-  }
+}
 
-  #webcam-container {
-    position: absolute; /* Position absolutely within the webcam container */
-    top: 49.5%; /* Center vertically */
+p {
+  font-family: DiatypeRegular;
+  color: black;
+  position: fixed;
+  top: 1.5rem;
+  left: 6px;
+  right: 6px;
+  width: 40%;
+  padding: 6px 6px;
+  /* mix-blend-mode:overlay; */
+  z-index: 6;
+}
+
+.selected-projects {
+  color: black;
+  /* text-decoration: none; */
+}
+
+img {
+  width: 100%;
+  height: auto;
+  
+}
+
+#extra-img {
+  opacity: 0;
+transition: opacity 0.1s ease;
+max-width: 100px;
+position: fixed;
+  /* top: 0; */
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items:baseline;
+  padding: 6px 6px;
+  
+}
+
+#extra-img.show {
+  opacity: 1;
+}
+
+#suncaptureone {
+  /* padding-bottom: 6px; */
+}
+
+#suncapturetwo {
+  padding-top: 6px;
+}
+
+#suncapturethree {
+  padding-top: 6px;
+}
+
+.box {
+  box-sizing: border-box;
+  width: 8rem;
+  cursor: pointer;
+}
+
+select {
+  font-family: DiatypeRegular;
+  /* font-size: 16px; */
+      padding: 4px 8px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      outline: none;
+      appearance: auto;
+      -webkit-appearance: auto;
+      -moz-appearance: auto;
+      /* background-color: rgba(9, 58, 255, 1);
+      color: white; */
+      background-image: none;
+}
+
+/* Font size for the daytime message */
+.daytime-message {
+  font-size: 4rem;
+}
+
+/* Style for 'Jake Kuerbis' text in orange */
+.highlight-orange {
+  color: orange;
+  font-family: DiatypeRegular;
+}
+
+/* Style for 'Parsons School of Design' text in purple */
+.highlight-purple {
+  color: purple;
+  font-family: DiatypeRegular;
+}
+
+/* Style for 'insta' and 'email' text in blue with underline */
+.highlight-blue {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+  font-family: DiatypeRegular;
+}
+
+/* Style for hover effects (optional) */
+.highlight-blue.link:hover {
+  text-decoration: none;
+}
+
+
+#page-title {
+  position: absolute; /* Position absolutely within the webcam container */
+    top: 50%; /* Center vertically */
     left: 50%; /* Center horizontally */
-    transform: translate(-50%, -50%); /* Center text within the container */
+    transform: translate(-50%, -50%); /* Adjust to center */
+    color: white; /* Set text color, adjust as necessary */
+    font-size: 8rem; /* Adjust font size */
+    font-weight: normal;
+    line-height: 7rem;
+    font-family: DiatypeRegular;
+    width: 100%;
+    /* background-color: blue; */
+    z-index: 10; /* Ensure it is above the webcam image */
+    transition: opacity 1s ease;
+    animation: fadeIn 1s ease;
+}
+
+
+.fade-out {
+  opacity: 0; /* Hide the header with full transparency */
+}
+
+#background-image-container {
+  /* max-width: 600px; */
+  /* width: 20em; */
+  padding-top: 10px;
+  margin-top: 20px;
+}
+
+#background-image {
+  position: absolute;
+  top: 49%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 68vh;
+  
+  width: 100%;
+  height: auto;
+  z-index: -1;
+  display: none;
+  /* mix-blend-mode: multiply; */
+  }
+
+  #extra-text {
+    opacity: 0;
+  transition: opacity 0.1s ease;
+  }
+  
+  #extra-text.show {
+    opacity: 1;
+  }
+
+  /* .extra-text-p {
+    top: 9.5rem;
+  } */
+  
+
+#webcam-container {
+  margin-bottom: 20px;
+  position: relative; /* Position relative to allow absolute positioning of child elements */
+    text-align: center; /* Center text within the container */
     width: 100%;
     max-width: 325px;
     overflow: hidden;
-    z-index: -4;
-    margin-top: 0px;
-    opacity: 50%;
+    animation: fadeIn 1s ease;
+    position: relative;
+    z-index: 3; /* Ensure the image stays within the container */
+}
+
+#global-container {
+  margin-bottom: 20px;
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+  flex-grow: 1;
+}
+
+#hover-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 4;
+  background: transparent;
+  cursor: pointer;
+  /* pointer-events: none; */
+}
+header, footer, #clock, #about, #powered-by {
+  position: relative;
+  /* width: 100%; */
+  z-index: 5;
+}
+
+#webcam {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+img[loading] {
+  image-rendering: pixelated;
+}
+
+
+.overlay-text {
+  font-family: DiatypeRegular;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: black;
+  font-size: 10em;
+  font-weight: bold;
+  opacity: 0;
+  transition: opacity 0.1s ease;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+#webcam-container:hover .overlay-text {
+  opacity: 1;
+}
+
+/* General styles for columns */
+.columns-container {
+  display: flex;
+  background-color: rgb(133, 132, 123);
+  width: 100vw;
+  height: calc(100vh - 20px);
+  overflow: hidden;
+  position: absolute; /* For the absolute positioning of the right column */
+}
+
+.left-column {
+  bottom: 0;
+  overflow: hidden;
+  /* overflow-y: scroll; */
+  width: 15rem;
+  padding: 10px;
+  overflow-y: auto;
+  color: white;
+  text-align: left;
+}
+
+.left-column p,
+.left-column ul {
+    margin: 0;
+    padding: 0.5rem 0;
+}
+
+.left-column ul {
+    list-style-type: none;
+    padding-left: 0; /* Remove indentation */
+}
+
+.left-column ul li {
+    padding: 0.2rem 0;
+}
+
+.left-column ul li a {
+    text-decoration: underline;
+    color: white;
+}
+
+.highlight-orange {
+    color: orange;
+}
+
+.highlight-purple {
+    color: rgb(136, 29, 208);
+}
+
+.highlight-blue {
+    color: rgb(33, 37, 255);
+    text-decoration: underline;
+}
+
+.highlight-green {
+    color: rgb(7, 181, 7);
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.center-column {
+  display: grid;
+  gap: 10px;
+  width: 50rem;
+  /* background-color: #2a2a2a; */
+  padding: 1rem;
+  overflow-y: auto;
+  color: white;
+}
+
+img {
+  width: 100%;
+}
+
+.right-column {
+  position: absolute;
+  height: calc(100vh - 20px);
+    bottom: 0;
+    overflow: hidden;
+    overflow-y: scroll;
+    padding: 0px 8px;
+  width: 10rem;
+  padding: 1rem;
+  overflow-y: auto;
+  color: white;
+  right: 0;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  color: white;
+  background: black;
+  
+}
+
+#clock-temperature, #about, #powered-by {
+  color: white;
+}
+
+#powered-by {
+  text-decoration: underline;
+}
+
+.powered-by:hover {
+  color: rgba(128, 106, 223, 1);
+}
+
+::selection {
+  color: blue;
+}
+
+/* Change layout to two columns when screen width exceeds 1000px */
+@media (min-width: 1100px) {
+  .center-column {
+    grid-template-columns: 1fr 1fr; /* Two equal-width columns */
+  }
+
+  .center-column img {
+    width: 100%; /* Ensure images fit within grid columns */
+  }
+}
+
+@media (max-width: 600px) {
+
+  body {
+    
+    min-height: 100vh; /* Add padding to prevent content overlap with fixed header */
+  }
+
+  #page-title {
+    position: absolute; /* Position absolutely within the webcam container */
+      top: 50%; /* Center vertically */
+      left: 50%; /* Center horizontally */
+      transform: translate(-50%, -50%); /* Adjust to center */
+      color: white; /* Set text color, adjust as necessary */
+      font-size: 6rem; /* Adjust font size */
+      font-weight: normal;
+      /* line-height: 22rem; */
+      width: 100%;
+  }
+
+  #webcam-container {
+    position: relative; /* Position relative to allow absolute positioning of child elements */
+    text-align: center; /* Center text within the container */
+    width: 100%;
+    max-width: 325px;
+    overflow: hidden;
     animation: fadeIn 1s ease; /* Ensure the image stays within the container */
   }
   
-  #webcam {
-    width: 100%;
-    height: auto;
-    display: block;
-
-  }
-
   footer {
     position: fixed;
     bottom: 0;
     width: 100%;
-    height: 30px;
+    height: 46px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -112,11 +486,21 @@
     color: white;
     background: black; /* Default background */
   }
-  
-  #clock-temperature, #about, #powered-by {
-    color: white;
+}
+
+@media (max-width: 400px) {
+  #webcam-container {
+    display: block;
   }
-  
-  #powered-by {
-    text-decoration: underline;
+
+  p {
+    width: auto;
   }
+
+  #background-image-container {
+    display: block;
+  }
+}
+
+/* Responsive adjustments for right column at 1000px width */
+
