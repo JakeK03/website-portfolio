@@ -482,8 +482,8 @@ footer {
 }
 
 @media (max-width: 400px) {
-  #webcam-container {
-    
+  #extra-img {
+    display: none;
   }
 
   p {
