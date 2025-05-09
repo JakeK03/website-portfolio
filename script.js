@@ -180,8 +180,271 @@ if (elapsed < segment) {
         webcam.src = `https://www.timberlinelodge.com/snowcameras//palmerbottom.jpg?nocache=${Date.now()}`;
       }
     }
+
+
+    let isImgOneProjectOpen = false;
+    let currentImageIndex = 0;
+    let currentImageIndexTwo = 0;
+    let currentImageIndexThree = 0;
+    let currentImageIndexFour = 0;
+    let currentImageIndexFive = 0;
+    let currentImageIndexSix = 0;
+
+const imagePool = [
+  'photos/Scan_176.png',
+  'photos/Scan_177.png',
+  'photos/Scan_178.png',
+  'photos/Scan_179.png',
+  'photos/Scan_180.png',
+  'photos/book-scan_041125.mp4',
+  'photos/spread-animation_7.gif',
+  'photos/6E9A5538.jpeg',
+  'photos/6E9A5650.jpeg',
+  'photos/IMG_8520.jpeg',
+  'photos/Scan_upd_2.jpg',
+  'photos/Scan_upd_3.1.jpg'
+];
+
+const imagePoolTwo = [
+  'photos/100IMG_1.mov',
+  'photos/Screenshot 2024-09-19 at 4.47.03 PM.png',
+  'photos/100IMG/100IMG_13.png',
+  'photos/100IMG/100IMG_14.png',
+  'photos/100IMG/100IMG_20_2.png',
+  'photos/100IMG/100IMG_19_2.png',
+  'photos/stretch-test-book.mov'
+];
+
+const imagePoolThree = [
+  ''
+];
+
+const imagePoolFour = [
+  ''
+];
+
+const imagePoolFive = [
+  ''
+];
+
+const imagePoolSix = [
+  ''
+];
+
+document.addEventListener("DOMContentLoaded", function () {
+  const selectedProjects = document.querySelector(".selected-projects");
+  const figures = document.querySelectorAll("figure");
+  const imageGrid = document.querySelector("#image_grid");
+  const projectList = document.querySelector(".selected-projects-list");
+  const webcamContainer = document.querySelector("#webcam-container");
+  const education = document.querySelector(".education");
+  const headerTitle = document.querySelector(".header-title");
+  const webcamTopRight = document.querySelector("#global-container-two");
+  const webcamTopRightContainer = document.querySelector("#webcam-container-two");
+  
+  const imgOneList = document.querySelector('#list-one-full');
+  const imgTwoList = document.querySelector('#list-two-full');
+  const imgThreeList = document.querySelector('#list-three-full');
+  const imgFourList = document.querySelector('#list-four-full');
+  const imgFiveList = document.querySelector('#list-five-full');
+  const imgSixList = document.querySelector('#list-six-full');
+  
+  const imgOneImage = imgOneList.querySelector('img');
+  const imgTwoImage = imgTwoList.querySelector('img');
+  const imgThreeImage = imgThreeList.querySelector('img');
+  const imgFourImage = imgFourList.querySelector('img');
+  const imgFiveImage = imgFiveList.querySelector('img');
+  const imgSixImage = imgSixList.querySelector('img');
+
+  const imgOne = document.querySelector('#img-one');
+  const imgTwo = document.querySelector('#img-two');
+  const imgThree = document.querySelector('#img-three');
+  const imgFour = document.querySelector('#img-four');
+  const imgFive = document.querySelector('#img-five');
+  const imgSix = document.querySelector('#img-six');
+
+  const listOne = document.querySelector('#list-one');
+  const listTwo = document.querySelector('#list-two');
+  const listThree = document.querySelector('#list-three');
+  const listFour = document.querySelector('#list-four');
+  const listFive = document.querySelector('#list-five');
+  const listSix = document.querySelector('#list-six');
+
+  const webcamImage = document.getElementById('webcam');
+  const originalWebcamSrc = webcamImage.src;
+  const newImageSrc = 'photos/DSC_2852.JPG';
+  
+
+  const workTopRight = document.querySelector('#work-top-right');
+
+  let isProjectsVisible = false;
+
+  // if (imgOneImage) {
+  //   imgOneImage.style.maxWidth = '40em';
+  //   imgOneImage.style.height = 'auto';
+  // }
+  // if (imgTwoImage) {
+  //   imgTwoImage.style.maxHeight = 'fit-content';
+  //   imgTwoImage.style.height = 'auto';
+  // }
+  // if (imgThreeImage) {
+  //   imgThreeImage.style.maxHeight = 'fit-content';
+  //   imgThreeImage.style.height = 'auto';
+  // }
+
+  if (headerTitle) {
+    headerTitle.addEventListener("click", () => {
+      education.style.display = education.style.display === "block" ? "none" : "block";
+    });
+  }
+
+  headerTitle.addEventListener('mouseenter', () => {
+      webcamImage.src = newImageSrc;
+    });
+
+  headerTitle.addEventListener('mouseleave', () => {
+      webcamImage.src = originalWebcamSrc;
+    });
+
+  if (selectedProjects) {
+    selectedProjects.addEventListener("click", () => {
+      if (isImgOneProjectOpen) {
+        isImgOneProjectOpen = false;
+        imageGrid.style.display = 'none';
+        // imgOne.style.display = 'block';
+        // imgTwo.style.display = 'none';
+        // imgThree.style.display = 'none';
+        // imgFour.style.display = 'none';
+        // imgFive.style.display = 'none';
+        // imgSix.style.display = 'none';
+        projectList.style.display = 'block';
+        selectedProjects.textContent = "Selected Projects";
+      }
+     
+      isProjectsVisible = !isProjectsVisible;
+      selectedProjects.style.color = isProjectsVisible ? "blue" : "black";
+      projectList.style.display = isProjectsVisible ? "block" : "none";
+      webcamTopRight.style.display = isProjectsVisible ? "block" : "none";
+      webcamContainer.style.display = isProjectsVisible ? "none" : "block";
+      imageGrid.style.display = isProjectsVisible ? "flex" : "none";
+      // imgOneList.style.display = "none";
+      // imgTwoList.style.display = "none";
+      workTopRight.style.display = "none";
+    });
+  }
+
+  listOne.addEventListener("mouseenter", () => {
+    imgOne.style.display = "block";
+    listOne.style.color = "blue";
+  });
+
+  listOne.addEventListener("mouseleave", () => {
+    if (!isImgOneProjectOpen) {
+      imgOne.style.display = "none";
+      listOne.style.color = "black";
+    }
+  });
+
+  listTwo.addEventListener("mouseenter", () => {
+    imgTwo.style.display = "block";
+    listTwo.style.color = "blue";
+  });
+
+  listTwo.addEventListener("mouseleave", () => {
+    if (!isImgOneProjectOpen) {
+      imgTwo.style.display = "none";
+      listTwo.style.color = "black";
+    }
+  });
+
+  listThree.addEventListener("mouseenter", () => {
+    imgThree.style.display = "block";
+    listThree.style.color = "blue";
+  });
+
+  listThree.addEventListener("mouseleave", () => {
+    if (!isImgOneProjectOpen) {
+      imgThree.style.display = "none";
+      listThree.style.color = "black";
+    }
+  });
+
+  listFour.addEventListener("mouseenter", () => {
+    imgFour.style.display = "block";
+    listFour.style.color = "blue";
+  });
+
+  listFour.addEventListener("mouseleave", () => {
+    if (!isImgOneProjectOpen) {
+      imgFour.style.display = "none";
+      listFour.style.color = "black";
+    }
+  });
+
+  listFive.addEventListener("mouseenter", () => {
+    imgFive.style.display = "block";
+    listFive.style.color = "blue";
+  });
+
+  listFive.addEventListener("mouseleave", () => {
+    if (!isImgOneProjectOpen) {
+      imgFive.style.display = "none";
+      listFive.style.color = "black";
+    }
+  });
+
+  listSix.addEventListener("mouseenter", () => {
+    imgSix.style.display = "block";
+    listSix.style.color = "blue";
+  });
+
+  listSix.addEventListener("mouseleave", () => {
+    if (!isImgOneProjectOpen) {
+      imgSix.style.display = "none";
+      listSix.style.color = "black";
+    }
+  });
+
+  if (listOne) {
+    listOne.addEventListener("click", () => {
+      selectedProjects.textContent = "Back";
+      isImgOneProjectOpen = true;
+      currentImageIndexThree = 0;
+      imgOneImage.src = imagePoolOne[currentImageIndexOne];
+      imgOneList.style.display = 'block';
+      imageGrid.style.display = 'none';
+      // workTopRight.style.display = 'block';
+      listOne.style.display = 'block';
+  }
+)};
+  
+
+  if (webcamTopRightContainer) {
+    webcamTopRightContainer.addEventListener("click", () => {
+      isImgOneProjectOpen = false;
+      isProjectsVisible = false;
+      webcamContainer.style.display = 'block';
+      webcamTopRight.style.display = 'none';
+      // imageGrid.style.display = 'none';
+      // imgOneList.style.display = 'none';
+      // imgTwoList.style.display = 'none';
+      workTopRight.style.display = 'none';
+      imgOne.style.display = 'none';
+      // listTwo.style.display = 'none';
+      projectList.style.display = 'none';
+      selectedProjects.textContent = "Selected Projects";
+      selectedProjects.style.color = "black";
+      // figures.forEach((figure) => {
+      //   figure.style.display = 'none';
+      // });
+    });
+  }
+
+});
+
     
     
+        
 
      
 
@@ -226,19 +489,117 @@ if (elapsed < segment) {
   extraImg.classList.remove('show');
     });
     
-    const headerTitle = document.querySelector('.header-title');
-    const webcamImage = document.getElementById('webcam');
+    // const headerTitle = document.querySelector('.header-title');
+    // const webcamImage = document.getElementById('webcam');
+    // const imgOne = document.querySelector('#img-one');
+    // const imgTwo = document.querySelector('#img-two');
+    // const imgThree = document.querySelector('#img-three');
+    // const imgFour = document.querySelector('#img-four');
+    // const imgFive = document.querySelector('#img-five');
+    // const imgSix = document.querySelector('#img-six');
+    // const imgSeven = document.querySelector('#img-seven');
+    // const imgEight = document.querySelector('#img-eight');
+    // const imgNine = document.querySelector('#img-nine');
+    // const listOne = document.querySelector('#list-one');
+    // const listTwo = document.querySelector('#list-two');
+    // const listThree = document.querySelector('#list-three');
+    // const listFour = document.querySelector('#list-four');
+    // const listFive = document.querySelector('#list-five');
+    // const listSix = document.querySelector('#list-six');
+    // const listSeven = document.querySelector('#list-seven');
+    // const listEight = document.querySelector('#list-eight');
+    // const listNine = document.querySelector('#list-nine');
     
-    const originalWebcamSrc = webcamImage.src;
-    const newImageSrc = 'photos/BRW0C96E696CA5B_000532.png'; // <-- update with your correct path
     
-    headerTitle.addEventListener('mouseenter', () => {
-      webcamImage.src = newImageSrc;
-    });
+    // const originalWebcamSrc = webcamImage.src;
+    // const newImageSrc = 'photos/DSC_2852.JPG'; // <-- update with your correct path
+
+    // imgOne.addEventListener('mouseenter', () => {
+    //   listOne.style.display = "block";
+    // });
+
+    // imgTwo.addEventListener('mouseenter', () => {
+    //   listTwo.style.display = "block";
+    // });
+
+    // imgThree.addEventListener('mouseenter', () => {
+    //   listThree.style.display = "block";
+    // });
+
+    // imgFour.addEventListener('mouseenter', () => {
+    //   listFour.style.display = "block";
+    // });
+
+    // imgFive.addEventListener('mouseenter', () => {
+    //   listFive.style.display = "block";
+    // });
+
+    // imgSix.addEventListener('mouseenter', () => {
+    //   listSix.style.display = "block";
+    // });
+
+    // imgSeven.addEventListener('mouseenter', () => {
+    //   listSeven.style.display = "block";
+    // });
+
+    // imgEight.addEventListener('mouseenter', () => {
+    //   listEight.style.display = "block";
+    // });
+
+    // imgNine.addEventListener('mouseenter', () => {
+    //   listNine.style.display = "block";
+    // });
+
+    // imgOne.addEventListener('mouseleave', () => {
+    //   if (!isImgOneProjectOpen) {
+    //     listOne.style.display = "none";
+    //   }
+    // });
     
-    headerTitle.addEventListener('mouseleave', () => {
-      webcamImage.src = originalWebcamSrc;
-    });
+    // imgTwo.addEventListener('mouseleave', () => {
+    //   listTwo.style.display = "none";
+    // });
+
+    // imgThree.addEventListener('mouseleave', () => {
+    //   listThree.style.display = "none";
+    // });
+
+    // imgFour.addEventListener('mouseleave', () => {
+    //   listFour.style.display = "none";
+    // });
+
+    // imgFive.addEventListener('mouseleave', () => {
+    //   listFive.style.display = "none";
+    // });
+
+    // imgSix.addEventListener('mouseleave', () => {
+    //   listSix.style.display = "none";
+    // });
+
+    // imgSeven.addEventListener('mouseleave', () => {
+    //   listSeven.style.display = "none";
+    // });
+
+    // imgEight.addEventListener('mouseleave', () => {
+    //   listEight.style.display = "none";
+    // });
+
+    // imgThree.addEventListener('mouseleave', () => {
+    //   listThree.style.display = "none";
+    // });
+
+    // imgNine.addEventListener('mouseleave', () => {
+    //   listNine.style.display = "none";
+    // });
+    
+    // headerTitle.addEventListener('mouseenter', () => {
+    //   webcamImage.src = newImageSrc;
+    // });
+    
+    // headerTitle.addEventListener('mouseleave', () => {
+    //   webcamImage.src = originalWebcamSrc;
+    // });
+
 
       fetchSunTimes();
       fetchTemperature();

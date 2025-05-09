@@ -3,11 +3,6 @@
   src: url(font_library/ABCDiatype-Regular-Trial.woff2);
 }
 
-@font-face {
-  font-family: DiatypeLight;
-  src: url(font_library/ABCDiatype-Light-Trial.woff2);
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -15,158 +10,25 @@
   font-family: sans-serif;
 }
 
+@keyframes blink {
+  50% {
+      opacity: 0;
+  }
+
+  100% {
+      opacity: 1;
+  }
+}
+
 body {
-  background-color: rgb(255, 255, 255);
-  color: white;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   min-height: 100vh;
-  padding-top: 10px; /* Add padding to prevent content overlap with fixed header */
 }
 
 a {
-  color: white;
+  color: rgb(255, 255, 255);
   font-family: DiatypeRegular;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 6px 6px;
-  animation: fadeIn 1s ease;
-  background-color: white;
-}
-
-.header-title {
-  font-family: DiatypeRegular;
-  
-  font-weight: normal;
-  color: #000000;
-  text-decoration: none;
-  text-decoration: underline;
-}
-
-a:hover {
-  color: rgba(9, 58, 255, 1);
-}
-
-.header-image img {
-  height: 60px; /* Adjust size as needed */
-  width: auto;
-  border-radius: 4px;
-}
-
-#main {
-  display: flex;
-  /* flex: 1; */
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  /* margin-bottom: 20px; */
-  /* min-height: 100vh; */
-  
-}
-
-p {
-  font-family: DiatypeRegular;
-  color: black;
-  position: fixed;
-  top: 1.5rem;
-  left: 6px;
-  right: 6px;
-  width: 40%;
-  padding: 6px 6px;
-  /* mix-blend-mode:overlay; */
-  z-index: 6;
-}
-
-.selected-projects {
-  color: black;
-  /* text-decoration: none; */
-}
-
-img {
-  width: 100%;
-  height: auto;
-  
-}
-
-#extra-img {
-  display: none;
-  
-}
-
-#extra-img.show {
-  opacity: 1;
-}
-
-#suncaptureone {
-  /* padding-bottom: 6px; */
-}
-
-#suncapturetwo {
-  padding-top: 6px;
-}
-
-#suncapturethree {
-  padding-top: 6px;
-}
-
-.box {
-  box-sizing: border-box;
-  width: 8rem;
-  cursor: pointer;
-}
-
-select {
-  font-family: DiatypeRegular;
-  /* font-size: 16px; */
-      padding: 4px 8px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      outline: none;
-      appearance: auto;
-      -webkit-appearance: auto;
-      -moz-appearance: auto;
-      /* background-color: rgba(9, 58, 255, 1);
-      color: white; */
-      background-image: none;
-}
-
-/* Font size for the daytime message */
-.daytime-message {
-  font-size: 4rem;
-}
-
-/* Style for 'Jake Kuerbis' text in orange */
-.highlight-orange {
-  color: orange;
-  font-family: DiatypeRegular;
-}
-
-/* Style for 'Parsons School of Design' text in purple */
-.highlight-purple {
-  color: purple;
-  font-family: DiatypeRegular;
-}
-
-/* Style for 'insta' and 'email' text in blue with underline */
 .highlight-blue {
   color: blue;
   text-decoration: underline;
@@ -174,224 +36,362 @@ select {
   font-family: DiatypeRegular;
 }
 
-/* Style for hover effects (optional) */
-.highlight-blue.link:hover {
-  text-decoration: none;
+div {
+  display: block;
 }
 
-
-#page-title {
-  position: absolute; /* Position absolutely within the webcam container */
-    top: 50%; /* Center vertically */
-    left: 50%; /* Center horizontally */
-    transform: translate(-50%, -50%); /* Adjust to center */
-    color: white; /* Set text color, adjust as necessary */
-    font-size: 8rem; /* Adjust font size */
-    font-weight: normal;
-    line-height: 7rem;
-    font-family: DiatypeRegular;
-    width: 100%;
-    /* background-color: blue; */
-    z-index: 10; /* Ensure it is above the webcam image */
-    transition: opacity 1s ease;
-    animation: fadeIn 1s ease;
-}
-
-
-.fade-out {
-  opacity: 0; /* Hide the header with full transparency */
-}
-
-#background-image-container {
-  /* max-width: 600px; */
-  /* width: 20em; */
-  padding-top: 10px;
-  margin-top: 20px;
-}
-
-#background-image {
-  position: absolute;
-  top: 49%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  max-width: 68vh;
-  
-  width: 100%;
-  height: auto;
-  z-index: -1;
-  display: none;
-  /* mix-blend-mode: multiply; */
-  }
-
-  #extra-text {
-    opacity: 0;
-  transition: opacity 0.1s ease;
-  }
-  
-  #extra-text.show {
-    opacity: 1;
-  }
-
-  /* .extra-text-p {
-    top: 9.5rem;
-  } */
-  
-
-#webcam-container {
-  margin-bottom: 20px;
-  position: relative; /* Position relative to allow absolute positioning of child elements */
-    text-align: center; /* Center text within the container */
-    width: 100%;
-    max-width: 325px;
-    overflow: hidden;
-    animation: fadeIn 1s ease;
-    position: relative;
-    z-index: 3; /* Ensure the image stays within the container */
-}
-
-#global-container {
-  margin-bottom: 20px;
+.main_page {
   position: relative;
-  display: inline-block;
-  z-index: 1;
-  flex-grow: 1;
+  min-height: 100vh;
 }
 
-#hover-overlay {
-  position: absolute;
+#background_area {
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  z-index: 4;
-  background: transparent;
-  cursor: pointer;
-  /* pointer-events: none; */
+  height: 100vh;
 }
-header, footer, #clock, #about, #powered-by {
+
+p {
+  font-family: DiatypeRegular;
+  color: black;
   position: relative;
-  /* width: 100%; */
-  z-index: 5;
+  top: 0;
+  left: 0;
+  right: 6px;
+  width: 36%;
+  padding: 6px 6px;
+  /* mix-blend-mode:overlay; */
+  z-index: 6;
+}
+
+.header-title {
+  text-decoration: underline;
+}
+
+.header-title:hover {
+  color: blue;
+  cursor: pointer;
+}
+
+.education {
+  display: none;
+}
+
+.selected-projects {
+  color: black;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.selected-projects-list {
+  display: none;
+  left: 0;
+  position: relative;
+  color: black;
+  cursor: pointer;
+  z-index: 6;
+  width: fit-content;
+  /* animation: blink 1s infinite; */
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+#list-one {
+  /* display: none; */
+  padding-left: 6px;
+  top: 0;
+  width: fit-content;
+}
+
+#list-two {
+  /* display: none; */
+  padding-left: 6px;
+  top: 0; 
+  width: fit-content;
+}
+
+#list-three {
+  /* display: none; */
+  padding-left: 6px;
+  top: 0; 
+  width: fit-content;
+}
+
+#list-four {
+  /* display: none; */
+  padding-left: 6px;
+  top: 0; 
+  width: fit-content;
+}
+
+#list-five {
+  /* display: none; */
+  padding-left: 6px;
+  top: 0; 
+  width: fit-content;
+}
+
+#list-six {
+  /* display: none; */
+  padding-left: 6px;
+  top: 0; 
+  width: fit-content;
+}
+
+.selected-projects:hover {
+  color: blue;
+}
+
+#list-one-full {
+  display: none;
+  margin: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.list-one-image-one {
+  width: 40rem;
+  height: auto;
+  margin: auto;
+}
+
+#list-two-full {
+  display: none;
+  margin: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.list-two-image-one {
+  width: 40rem;
+  height: auto;
+  margin: auto;
+}
+
+#list-three-full {
+  display: none;
+  margin: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.list-three-image-one {
+  width: 40rem;
+  height: auto;
+  margin: auto;
+}
+
+#list-four-full {
+  display: none;
+  margin: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.list-four-image-one {
+  width: 40rem;
+  height: auto;
+  margin: auto;
+}
+
+#list-five-full {
+  display: none;
+  margin: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.list-five-image-one {
+  width: 40rem;
+  height: auto;
+  margin: auto;
+}
+
+#list-six-full {
+  display: none;
+  margin: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.list-six-image-one {
+  width: 40rem;
+  height: auto;
+  margin: auto;
+}
+
+video {
+  display: none;
+  max-width: 20em;
+}
+
+.header-title {
+  color: black;
+}
+
+#webcam-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: auto;
+  max-width: 325px;
 }
 
 #webcam {
   width: 100%;
   height: auto;
-  display: block;
 }
 
-img[loading] {
-  image-rendering: pixelated;
+#global-container-two {
+  position: relative;
+  display: none;
 }
 
+#webcam-container-two {
+  position: fixed;
+  top: 6px;
+  right: 6px;
+  justify-content: right;
+  margin: auto;
+  max-width: 100px;
+}
 
-.overlay-text {
-  font-family: DiatypeRegular;
+#webcam-two {
+  width: 100%;
+  height: auto;
+}
+
+#work-top-right {
+  display: none;
+  position: fixed;
+  top: 6px;
+  right: 6px;
+  justify-content: right;
+  margin: auto;
+  max-width: 100px;
+  cursor: pointer;
+}
+
+#image_grid {
+  /* opacity: 0; */
+  /* bottom: 0;
+  left: 0;
+  right: 0; */
+  padding: 2em;
+  max-width: 72em;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: black;
-  font-size: 10em;
-  font-weight: bold;
-  opacity: 0;
-  transition: opacity 0.1s ease;
-  pointer-events: none;
-  z-index: 1000;
+  /* display: flex; */
+  /* flex-flow: row wrap; */
+  /* box-sizing: content-box; */
+  z-index: 1;
+  /* flex-basis: 20%; */
+  /* width: calc(100vw - 20px); */
 }
 
-#webcam-container:hover .overlay-text {
-  opacity: 1;
+figure {
+  /* display: none; */
+  width: 36em;
+  /* aspect-ratio: 1 / 1; */
+  margin: auto;
+  padding: 0.1rem;
+  padding-bottom: 8px;
+  flex-shrink: 0;
 }
 
-/* General styles for columns */
-.columns-container {
-  display: flex;
-  background-color: rgb(133, 132, 123);
-  width: 100vw;
-  height: calc(100vh - 20px);
-  overflow: hidden;
-  position: absolute; /* For the absolute positioning of the right column */
+#img-one {
+  display: none;
+  margin: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 36em;
 }
 
-.left-column {
-  bottom: 0;
-  overflow: hidden;
-  /* overflow-y: scroll; */
-  width: 15rem;
-  padding: 10px;
-  overflow-y: auto;
-  color: white;
-  text-align: left;
+#img-two {
+  display: none;
+  margin: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 36em;
 }
 
-.left-column p,
-.left-column ul {
-    margin: 0;
-    padding: 0.5rem 0;
+#img-three {
+  display: none;
+  margin: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30em;
 }
 
-.left-column ul {
-    list-style-type: none;
-    padding-left: 0; /* Remove indentation */
+#img-four {
+  display: none;
+  margin: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 36em;
 }
 
-.left-column ul li {
-    padding: 0.2rem 0;
+#img-five {
+  display: none;
+  margin: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40em;
 }
 
-.left-column ul li a {
-    text-decoration: underline;
-    color: white;
+#img-six {
+  display: none;
+  margin: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30em;
 }
 
-.highlight-orange {
-    color: orange;
+#img-seven {
+  display: none;
 }
 
-.highlight-purple {
-    color: rgb(136, 29, 208);
+#img-eight {
+  display: none;
 }
 
-.highlight-blue {
-    color: rgb(33, 37, 255);
-    text-decoration: underline;
+#img-nine {
+  display: none;
 }
 
-.highlight-green {
-    color: rgb(7, 181, 7);
-}
-
-.underline {
-    text-decoration: underline;
-}
-
-.center-column {
-  display: grid;
-  gap: 10px;
-  width: 50rem;
-  /* background-color: #2a2a2a; */
-  padding: 1rem;
-  overflow-y: auto;
-  color: white;
-}
-
-img {
-  width: 100%;
-}
-
-.right-column {
-  position: absolute;
-  height: calc(100vh - 20px);
-    bottom: 0;
-    overflow: hidden;
-    overflow-y: scroll;
-    padding: 0px 8px;
-  width: 10rem;
-  padding: 1rem;
-  overflow-y: auto;
-  color: white;
-  right: 0;
+figure:hover {
+  cursor: pointer;
 }
 
 footer {
@@ -424,45 +424,58 @@ footer {
   color: blue;
 }
 
-/* Change layout to two columns when screen width exceeds 1000px */
-@media (min-width: 1100px) {
-  .center-column {
-    grid-template-columns: 1fr 1fr; /* Two equal-width columns */
-  }
-
-  .center-column img {
-    width: 100%; /* Ensure images fit within grid columns */
-  }
+a:hover {
+  color: blue;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 640px) {
 
   body {
     
     min-height: 100vh; /* Add padding to prevent content overlap with fixed header */
   }
 
-  #page-title {
-    position: absolute; /* Position absolutely within the webcam container */
-      top: 50%; /* Center vertically */
-      left: 50%; /* Center horizontally */
-      transform: translate(-50%, -50%); /* Adjust to center */
-      color: white; /* Set text color, adjust as necessary */
-      font-size: 6rem; /* Adjust font size */
-      font-weight: normal;
-      /* line-height: 22rem; */
-      width: 100%;
-  }
-
   p {
     width: auto;
   }
 
+  #img-one {
+    display: none;
+    opacity: 0;
+  }
+
+  #img-two {
+    display: none;
+    opacity: 0;
+  }
+
+  #img-three {
+    display: none;
+    opacity: 0;
+  }
+
+  #img-four {
+    display: none;
+    opacity: 0;
+  }
+
+  #img-five {
+    display: none;
+    opacity: 0;
+  }
+
+  #img-six {
+    display: none;
+    opacity: 0;
+  }
+
+  #webcam-container-two {
+    display: none;
+  }
+
   #webcam-container {
-    position: relative; /* Position relative to allow absolute positioning of child elements */
-    text-align: center; /* Center text within the container */
     width: 100%;
-    max-width: 325px;
+    max-width: 250px;
     overflow: hidden;
     animation: fadeIn 1s ease; /* Ensure the image stays within the container */
   }
@@ -479,21 +492,19 @@ footer {
     color: white;
     background: black; /* Default background */
   }
+
+  #about {
+    text-align: left;
+    width: 10%;
+  }
+
+  #powered-by {
+    text-align: center;
+    width: 40%;
+  }
+
+  #clock {
+    text-align: right;
+    width: 20%;
+  }
 }
-
-@media (max-width: 400px) {
-  #extra-img {
-    display: none;
-  }
-
-  p {
-    width: auto;
-  }
-
-  #background-image-container {
-    display: none;
-  }
-}
-
-/* Responsive adjustments for right column at 1000px width */
-
