@@ -295,16 +295,17 @@ document.addEventListener("DOMContentLoaded", function () {
   if (headerTitle) {
     headerTitle.addEventListener("click", () => {
       education.style.display = education.style.display === "block" ? "none" : "block";
+      // webcamImage.src = newImageSrc;
     });
   }
 
-  headerTitle.addEventListener('mouseenter', () => {
-      webcamImage.src = newImageSrc;
-    });
+  // headerTitle.addEventListener('mouseenter', () => {
+  //     webcamImage.src = newImageSrc;
+  //   });
 
-  headerTitle.addEventListener('mouseleave', () => {
-      webcamImage.src = originalWebcamSrc;
-    });
+  // headerTitle.addEventListener('mouseleave', () => {
+  //     webcamImage.src = originalWebcamSrc;
+  //   });
 
   if (selectedProjects) {
     selectedProjects.addEventListener("click", () => {
