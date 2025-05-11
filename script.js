@@ -196,7 +196,7 @@ const imagePool = [
   'photos/Scan_178.png',
   'photos/Scan_179.png',
   'photos/Scan_180.png',
-  'photos/book-scan_041125.mp4',
+  // 'photos/book-scan_041125.mp4',
   'photos/spread-animation_7.gif',
   'photos/6E9A5538.jpeg',
   'photos/6E9A5650.jpeg',
