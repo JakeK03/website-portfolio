@@ -212,7 +212,7 @@ const imagePoolTwo = [
   'photos/100IMG/100IMG_14.png',
   'photos/100IMG/100IMG_20_2.png',
   'photos/100IMG/100IMG_19_2.png',
-  'photos/stretch-test-book.mov'
+  // 'photos/stretch-test-book.mov'
 ];
 
 const imagePoolThree = [
