@@ -85,6 +85,7 @@ p {
 }
 
 .selected-projects {
+  display: none;
   color: black;
   text-decoration: underline;
   cursor: pointer;
