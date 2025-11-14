@@ -11,7 +11,10 @@
 <body>
   <div id="layout">
     <main class="main_page">
-      <div id="background_area"></div>
+      <div id="background_area">
+
+        <!-- <img id="background-image" src="photos/47760_20320_BI17-WGS84.tif"> -->
+      </div>
 
       
 
@@ -38,21 +41,36 @@
         <a href="mailto:jjkuerbis@me.com" class="highlight-blue">email</a>.
         <br><br>
         <span class="selected-projects">Selected Projects</span>
+
+        <!-- <img src="http://159.203.187.16:8080/webcam-sunset-2025-10-23T01-09-38-450Z.jpg" width="600"> -->
+
+        <div id="latest-snapshots">
+  <p>Latest Snapshots</p>
+  <div id="snapshot-gallery"></div>
+</div>
+
         <!-- <br><br> -->
         <!-- <span id="extra-text">Circadian Rythmn. Mount Hood, OR.</span> -->
         <br></p>
         <div class="selected-projects-list">
           <br>
-            <div id="list-one">2025: <br> <span class="underline">Impossible Produce</span></div>
+          2025:
+            <div id="list-one"> <span class="underline">Impossible Produce</span></div>
             <!-- <div id="list-one-one">2025: <br> <span class="underline">Impossible Produce</span></div> -->
-            <div id="list-two"><br>2024: <br> <span class="underline">Ghost Towns</span></div>
+            <br> 
+            2024:
+            <div id="list-two"> <span class="underline">Ghost Towns</span></div>
             <!-- <div id="list-two-two">2024: <br> <span class="underline">Ghost Towns</span></div> -->
             <div id="list-three"> <br> <span class="underline">Elisava Projects</span></div>
             <div id="list-four"> <br> <span class="underline">Pa-Per Material</span></div>
-            <div id="list-five"><br>2023: <br> <span class="underline">Forge PKI Trophy Design</span></div>
+            <br>
+            2023:
+            <div id="list-five"> <span class="underline">Forge PKI Trophy Design</span></div>
             <div id="list-six"> <br> <span class="underline">Cannes Festival Rebrand</span></div>
           
         </div>
+
+        <div id="image-grid-container" class="hidden-grid" data-current=""></div>
 
         <div id="list-one-full">
           <img class="list-one-image-one" src="photos/Scan_177.png">
@@ -109,6 +127,7 @@
 
     <div id="work-top-right">
       <img class="img-sqr" id="img-one-right" src="photos/IMG_8520.jpeg">
+      
     </div>
 
       <div id="image_grid">
@@ -128,7 +147,7 @@
           <img class="img-sqr" id="img-five" src="photos/PKI85 Award Mock 53.png">
         </figure>
         <figure class="row_three">
-          <img class="img-sqr" id="img-six" src="photos/poster_1.png">
+          <img class="img-sqr" id="img-six" src="photos/Screenshot 2023-05-17 at 5.36.27 PM.png">
         </figure>
         <figure class="row_three">
           <img class="img-sqr" id="img-seven" src="photos/IMG_4044.jpeg">
@@ -148,6 +167,36 @@
       </footer> 
     </main>
   </div>
+
+  <script>async function loadLatestSnapshots() {
+  try {
+    const response = await fetch('http://159.203.187.16:8080/');
+    const html = await response.text();
+
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+    const imgs = Array.from(doc.querySelectorAll('img'))
+      .map(img => img.getAttribute('src'))
+      .filter(src => src && src.endsWith('.jpg'))
+      .slice(0, 7);
+
+    const gallery = document.getElementById('snapshot-gallery');
+    gallery.innerHTML = imgs
+      .map(src => `
+        
+          <img src="http://159.203.187.16:8080${src}" 
+               style="width:10rem;height:auto;border-radius:2px; ">
+        </div>`)
+      .join('');
+  } catch (err) {
+    document.getElementById('snapshot-gallery').innerHTML = '<p style="color:red;">Failed to load snapshots.</p>';
+    console.error('❌ Failed to load snapshots:', err);
+  }
+}
+
+loadLatestSnapshots();
+
+</script>
 
   <script type='text/javascript' src='config.js'></script>
   <script src="script.js"></script>

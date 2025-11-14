@@ -414,9 +414,10 @@ document.addEventListener("DOMContentLoaded", function () {
       imgOneImage.src = imagePoolOne[currentImageIndexOne];
       imgOneList.style.display = 'block';
       imageGrid.style.display = 'none';
-      // workTopRight.style.display = 'block';
-      listOne.style.display = 'block';
-  }
+    
+      imgOne.style.display = 'none'; // hide the hover image
+    }
+    
 )};
   
 
@@ -442,6 +443,8 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
 });
+
+
 
     
     
