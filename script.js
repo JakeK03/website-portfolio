@@ -53,7 +53,7 @@ const colorDarkBlue = [0, 0, 139];
         let nextSunrise = new Date(sunrise);
         if (now >= sunset) nextSunrise.setDate(nextSunrise.getDate() + 1);
         const timeUntilSunrise = Math.ceil((nextSunrise - now) / (1000 * 60));
-        aboutElement.innerText = `Status: ${timeUntilSunrise} minutes until sunrise`;
+        aboutElement.innerHTML = `Status: ${timeUntilSunrise} min until sunrise`;
       }
     }
 
