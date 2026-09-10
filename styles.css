@@ -353,3 +353,87 @@ footer a,
     white-space: normal;
   }
 }
+
+
+/* -------------------------------------------------
+   Progressive project-media loading
+   Tiny generated placeholders are blurred until the
+   optimized responsive image has finished downloading.
+   ------------------------------------------------- */
+.progressive-media {
+  filter: blur(14px);
+  transform: scale(1.015);
+  opacity: 0.92;
+  transition:
+    filter 320ms ease,
+    transform 320ms ease,
+    opacity 320ms ease;
+  will-change: filter, transform, opacity;
+}
+
+.progressive-media.is-loaded {
+  filter: blur(0);
+  transform: scale(1);
+  opacity: 1;
+}
+
+.media-set,
+.mobile-project-image-wrap {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .progressive-media {
+    transition: none;
+  }
+}
+
+
+/* -------------------------------------------------
+   Active navigation/project blink
+   - Selected Projects blinks blue ↔ grey until a project is clicked.
+   - Once a project is clicked, Selected Projects stays blue and only
+     the clicked project's title blinks.
+   ------------------------------------------------- */
+.selected-projects.is-active {
+  animation: selected-projects-blink 1s steps(1, end) infinite;
+}
+
+/* Stop the Selected Projects blink as soon as a project is locked. */
+.project-selected .selected-projects.is-active {
+  animation: none;
+  color: var(--blue);
+}
+
+/* Only the title of the clicked/locked project blinks. */
+.project-selected .project-entry.is-active h2 {
+  animation: active-project-blink 1s steps(1, end) infinite;
+}
+
+@keyframes selected-projects-blink {
+  0%, 49% {
+    color: var(--blue);
+  }
+
+  50%, 100% {
+    color: #808080;
+  }
+}
+
+@keyframes active-project-blink {
+  0%, 49% {
+    color: var(--blue);
+  }
+
+  50%, 100% {
+    color: #808080;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .selected-projects.is-active,
+  .project-selected .project-entry.is-active h2 {
+    animation: none;
+    color: var(--blue);
+  }
+}

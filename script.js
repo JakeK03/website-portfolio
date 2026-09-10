@@ -39,11 +39,81 @@ document.addEventListener("DOMContentLoaded", () => {
   let lockedProject = null;
   let mobileProjectsBuilt = false;
 
+  function markMediaLoaded(img) {
+    if (!img) return;
+
+    // cached image can already be complete by the time we attach the listener
+    if (img.complete && img.naturalWidth > 0 && !img.dataset.src) {
+      requestAnimationFrame(() => img.classList.add("is-loaded"));
+      return;
+    }
+
+    img.addEventListener(
+      "load",
+      () => requestAnimationFrame(() => img.classList.add("is-loaded")),
+      { once: true }
+    );
+  }
+
+  function hydrateImage(img) {
+    if (!img || img.dataset.hydrated === "true") return;
+
+    // Listen before swapping away from the tiny blur placeholder.
+    img.addEventListener(
+      "load",
+      () => requestAnimationFrame(() => img.classList.add("is-loaded")),
+      { once: true }
+    );
+
+    if (img.dataset.srcset) {
+      img.srcset = img.dataset.srcset;
+    }
+
+    if (img.dataset.src) {
+      img.src = img.dataset.src;
+    }
+
+    img.dataset.hydrated = "true";
+  }
+
+  function hydrateVideo(video) {
+    if (!video || video.dataset.hydrated === "true") return;
+
+    const source = video.querySelector("source[data-src]");
+
+    if (source?.dataset.src) {
+      source.src = source.dataset.src;
+      source.removeAttribute("data-src");
+    } else if (video.dataset.src) {
+      video.src = video.dataset.src;
+    }
+
+    video.preload = "metadata";
+    video.dataset.hydrated = "true";
+    video.load();
+  }
+
+  function hydrateMediaSet(mediaSet) {
+    if (!mediaSet) return;
+
+    mediaSet.querySelectorAll("img[data-src], img[data-srcset]").forEach(hydrateImage);
+    mediaSet.querySelectorAll("video").forEach((video) => {
+      if (video.dataset.src || video.querySelector("source[data-src]")) {
+        hydrateVideo(video);
+      }
+    });
+  }
+
   function showProject(projectName) {
     if (mediaEmpty) mediaEmpty.hidden = true;
 
     mediaSets.forEach((set) => {
-      set.classList.toggle("is-visible", set.dataset.media === projectName);
+      const isVisible = set.dataset.media === projectName;
+      set.classList.toggle("is-visible", isVisible);
+
+      if (isVisible) {
+        hydrateMediaSet(set);
+      }
     });
 
     projectEntries.forEach((entry) => {
@@ -114,14 +184,35 @@ document.addEventListener("DOMContentLoaded", () => {
         currentIndex = (index + mediaItems.length) % mediaItems.length;
         const item = mediaItems[currentIndex];
 
+        displayImage.classList.remove("is-loaded");
+        displayImage.removeAttribute("srcset");
+
         if (item.tagName === "IMG") {
-          displayImage.src = item.currentSrc || item.src;
+          const blurSrc = item.getAttribute("src") || "";
+          const fullSrc = item.dataset.src || item.currentSrc || item.src || "";
+          const fullSrcset = item.dataset.srcset || "";
+
+          displayImage.src = blurSrc;
           displayImage.alt = item.alt || title.textContent.trim();
+          displayImage.classList.add("progressive-media");
           displayImage.style.display = "block";
+
+          // Wait a frame so the tiny placeholder can paint first.
+          requestAnimationFrame(() => {
+            displayImage.addEventListener(
+              "load",
+              () => requestAnimationFrame(() => displayImage.classList.add("is-loaded")),
+              { once: true }
+            );
+
+            if (fullSrcset) displayImage.srcset = fullSrcset;
+            displayImage.src = fullSrc;
+          });
         } else {
-          displayImage.src = item.poster || "";
+          const poster = item.dataset.poster || item.poster || "";
+          displayImage.src = poster;
           displayImage.alt = title.textContent.trim();
-          displayImage.style.display = item.poster ? "block" : "none";
+          displayImage.style.display = poster ? "block" : "none";
         }
 
         counter.textContent = `${currentIndex + 1} / ${mediaItems.length}`;
@@ -166,6 +257,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (mobileMedia.matches) buildMobileProjects();
     } else {
       lockedProject = null;
+      siteShell?.classList.remove("project-selected");
       clearProject();
       window.scrollTo(0, 0);
 
@@ -176,7 +268,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (projectsToggle && siteShell) {
     projectsToggle.addEventListener("click", () => {
-      if (!projectsOpen) setProjectsOpen(true);
+      setProjectsOpen(!projectsOpen);
     });
   }
 
@@ -197,7 +289,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     entry.addEventListener("click", () => {
       if (mobileMedia.matches) return;
+
       lockedProject = projectName;
+      siteShell?.classList.add("project-selected");
       showProject(projectName);
     });
 
