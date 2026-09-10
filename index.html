@@ -3,202 +3,179 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" href="photos/pixel1-03.png" />
+  <link rel="icon" type="image/png" href="photos/pixel1-03.png">
   <title>Jake Kuerbis</title>
   <link rel="stylesheet" href="styles.css">
   <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 </head>
 <body>
-  <div id="layout">
-    <main class="main_page">
-      <div id="background_area">
+  <main class="site-shell" id="site-shell">
+    <section class="column column-left" aria-label="About Jake Kuerbis">
+      <p><button class="text-button header-title" id="education-toggle" type="button">KÜERBIS</button></p>
 
-        <!-- <img id="background-image" src="photos/47760_20320_BI17-WGS84.tif"> -->
-      </div>
+      <p class="education" id="education">
+        <span class="underline">Education</span><br>
+        2021–2025 Parsons School of Design BFA, Communication Design<br>
+        2024 Elisava School of Design and Engineering, Study Abroad<br>
+        2019 Otis School of Art and Design, Summer Program
+      </p>
 
-      
-
-    <p>
-        <span class="header-title">KÜERBIS</span></p>
-
-        <p class="education">
-          <span class="underline">Education</span>
-          <br>
-          2021–2025 Parsons School of Design BFA,
-          Communication Design
-          <br>
-          2024 Elisava School of Design and Engineering, Study Abroad
-          <br>
-          2019 Otis School of Art and Design, 
-          Summer Program</p>
-
-         <p>
-        From Portland, OR to New York City,  
-        <span class="highlight-orange">Jake Kuerbis</span> is a multidisciplinary designer currently attending 
-        <span class="highlight-purple">Parsons School of Design</span>. 
-        <br><br>Specializing in visual identities; exploring the influence of human activity on natural spaces. Along with the implementation of food studies to create visual identities through design. Reach out on 
-        <a href="https://www.instagram.com/jake.kuerbis/" target="_blank" rel="noopener noreferrer" class="highlight-blue">insta</a> or 
-        <a href="mailto:jjkuerbis@me.com" class="highlight-blue">email</a>.
+      <p>
+        From Portland, OR to New York City, Jake Kuerbis is a designer currently attending Parsons School of Design.
         <br><br>
-        <span class="selected-projects">Selected Projects</span>
+        Currently exploring the influence of human activity on natural spaces and the implementation of food to create visual identities through design. Reach out on
+        <a class="highlight-blue" href="https://www.instagram.com/jake.kuerbis/" target="_blank" rel="noopener noreferrer">insta</a>
+        or <a class="highlight-blue" href="mailto:jjkuerbis@me.com">email</a>.
+        <br><br>
+        <button class="text-button selected-projects" id="projects-toggle" type="button" aria-expanded="false">Selected Projects:</button>
+      </p>
+    </section>
 
-        <!-- <img src="http://159.203.187.16:8080/webcam-sunset-2025-10-23T01-09-38-450Z.jpg" width="600"> -->
+    <section class="column column-middle" id="projects-column" aria-label="Selected projects" aria-hidden="true">
+      <article class="project-entry" tabindex="0" data-project="ghost">
+        <h2>Ghost Towns.2025:</h2>
+        <p>Inspired by 19th and early 20th century frontier mining towns in Oregon. This book looks into the decay of the final American frontier. What once was, and now is. The ultimate journey of prosperity and finally destruction. What is left is a hidden valley of tall grass, junkyards, old railway’s, and doomed mining ghost-towns. How can looking at the past, inform the future on human interaction with the natural landscape?</p>
+      </article>
 
-        <div id="latest-snapshots">
-  <p>Latest Snapshots</p>
-  <div id="snapshot-gallery"></div>
-</div>
+      <article class="project-entry" tabindex="0" data-project="impossible">
+        <h2>Impossible Produce.2025:</h2>
+        <p>Impossible Produce sets out to explore the calamities of American global food production, and imports of food products to survive the growing market needs of consumers. How has tariffs affected the impossibility of providing fresh fruits and vegetables year round?</p>
+      </article>
 
-        <!-- <br><br> -->
-        <!-- <span id="extra-text">Circadian Rythmn. Mount Hood, OR.</span> -->
-        <br></p>
-        <div class="selected-projects-list">
-          <br>
-          2025:
-            <div id="list-one"> <span class="underline">Impossible Produce</span></div>
-            <!-- <div id="list-one-one">2025: <br> <span class="underline">Impossible Produce</span></div> -->
-            <br> 
-            2024:
-            <div id="list-two"> <span class="underline">Ghost Towns</span></div>
-            <!-- <div id="list-two-two">2024: <br> <span class="underline">Ghost Towns</span></div> -->
-            <div id="list-three"> <br> <span class="underline">Elisava Projects</span></div>
-            <div id="list-four"> <br> <span class="underline">Pa-Per Material</span></div>
-            <br>
-            2023:
-            <div id="list-five"> <span class="underline">Forge PKI Trophy Design</span></div>
-            <div id="list-six"> <br> <span class="underline">Cannes Festival Rebrand</span></div>
-          
-        </div>
+      <article class="project-entry" tabindex="0" data-project="paper">
+        <h2>Pa–Per.2024:</h2>
+        <p>A Co-collaboration in Barcelona, set on utilizing bread scraps. Barcelona’s food culture was an inspiration for the food design project. Bread scraps are a big part of food waste, and the goal was set out to implement it as an organic material in a way to close the loop on recycling sustainability. The paper was made entirely out of bread scraps and paper bread bags sourced from a local bakery. This was created in part with Vincenzo Frontino and Issey Huang.</p>
+      </article>
 
-        <div id="image-grid-container" class="hidden-grid" data-current=""></div>
+      <article class="project-entry" tabindex="0" data-project="cannes">
+        <h2>Cannes Festival Design.2024:</h2>
+        <p>Inspired by camera shutters and viewports, this motion graphic course project was a redesign of a current brand or company.</p>
+      </article>
+    </section>
 
-        <div id="list-one-full">
-          <img class="list-one-image-one" src="photos/Scan_177.png">
-        </div>
+    <section class="column column-right" id="project-media" aria-live="polite" aria-label="Project images">
+      <div class="project-media-empty" id="project-media-empty">Hover or click a project to view its work.</div>
 
-        <div id="list-two-full">
-          <img class="list-two-image-one" src="photos/100IMG/100IMG_1.png">
-        </div>
-
-        <div id="list-three-full">
-          <img class="list-three-image-one" src="">
-        </div>
-
-        <div id="list-four-full">
-          <img class="list-four-image-one" src="">
-        </div>
-        
-        <div id="list-five-full">
-          <img class="list-five-image-one" src="">
-        </div>
-
-        <div id="list-six-full">
-          <img class="list-six-image-one" src="">
-        </div>
-
-        <div id="list-seven-full">
-          <img class="list-seven-image-one" src="">
-        </div>
-
-        <div id="list-eight-full">
-          <img class="list-eight-image-one" src="">
-        </div>
-
-        <div id="list-nine-full">
-          <img class="list-nine-image-one" src="">
-        </div>
-
-    <div id="global-container">
-      <a href="description.html">
-      <div id="webcam-container">
-        <div id="hover-overlay"></div>
-        <img id="webcam" src="https://www.timberlinelodge.com/snowcameras//palmerbottom.jpg" />
+      <div class="media-set" data-media="ghost">
+        <img src="photos/100IMG/100IMG_1.png" alt="Ghost Towns project image">
+        <img src="photos/100IMG/100IMG_13.png" alt="Ghost Towns project image">
       </div>
+
+      <div class="media-set" data-media="impossible">
+        <img src="photos/Scan_177.png" alt="Impossible Produce project image">
+        <img src="photos/IMG_8520.jpeg" alt="Impossible Produce project image">
+      </div>
+
+      <div class="media-set" data-media="paper">
+        <img src="photos/IMG_6714.jpg" alt="Pa–Per project image">
+        <img src="photos/IVAR BEEHIVE INSTRUCTIONS_Page_1.png" alt="Pa–Per project image">
+      </div>
+
+      <div class="media-set" data-media="cannes">
+        <img src="photos/STABS24.Jake.Kuerbis.MyOwnBrief.png" alt="Cannes Festival Design project image">
+        <img src="photos/Screenshot 2023-05-17 at 5.36.27 PM.png" alt="Cannes Festival Design project image">
+      </div>
+    </section>
+
+    <div id="global-container" class="home-webcam">
+      <a href="description.html">
+        <div id="webcam-container">
+          <div id="hover-overlay"></div>
+          <img id="webcam" src="https://www.timberlinelodge.com/snowcameras//palmerbottom.jpg" alt="Mount Hood webcam">
+        </div>
       </a>
     </div>
 
-    <div id="global-container-two">
-    <!-- <a href="description.html"> -->
-      <div id="webcam-container-two">
-        <img id="webcam-two" src="https://www.timberlinelodge.com/snowcameras//palmerbottom.jpg" />
-      </div>
-    <!-- </a> -->
-    </div>
+    <footer>
+      <div id="about">Status: Updating</div>
+      <div id="powered-by"><a class="powered-by" href="description.html">Mount Hood, Oregon / Circadian Rhythm</a></div>
+      <div id="clock"></div>
+    </footer>
+  </main>
 
-    <div id="work-top-right">
-      <img class="img-sqr" id="img-one-right" src="photos/IMG_8520.jpeg">
-      
-    </div>
+  <script>
+    const siteShell = document.getElementById('site-shell');
+    const projectsToggle = document.getElementById('projects-toggle');
+    const projectsColumn = document.getElementById('projects-column');
+    const projectEntries = [...document.querySelectorAll('.project-entry')];
+    const mediaSets = [...document.querySelectorAll('.media-set')];
+    const mediaEmpty = document.getElementById('project-media-empty');
+    const educationToggle = document.getElementById('education-toggle');
+    const education = document.getElementById('education');
 
-      <div id="image_grid">
-        <figure class="row-one">
-          <img class="img-sqr" id="img-one" src="photos/IMG_8520.jpeg">
-        </figure>
-        <figure class="row_two">
-          <img class="img-sqr" id="img-two" src="photos/100IMG/100IMG_13.png">
-        </figure>
-        <figure class="row_two">
-          <img class="img-sqr" id="img-three" src="photos/IVAR BEEHIVE INSTRUCTIONS_Page_1.png">
-        </figure>
-        <figure class="row_two">
-          <img class="img-sqr" id="img-four" src="photos/IMG_6714.jpg">
-        </figure>
-        <figure class="row_three">
-          <img class="img-sqr" id="img-five" src="photos/PKI85 Award Mock 53.png">
-        </figure>
-        <figure class="row_three">
-          <img class="img-sqr" id="img-six" src="photos/Screenshot 2023-05-17 at 5.36.27 PM.png">
-        </figure>
-        <figure class="row_three">
-          <img class="img-sqr" id="img-seven" src="photos/IMG_4044.jpeg">
-        </figure>
-        <figure class="row_three">
-          <img class="img-sqr" id="img-eight" src="photos/STABS24.Jake.Kuerbis.MyOwnBrief.png">
-        </figure>
-        <figure class="row_three">
-          <img class="img-sqr" id="img-nine" src="photos/Screenshot 2023-05-17 at 5.36.27 PM.png">
-        </figure>
-      </div>
+    let projectsOpen = false;
+    let lockedProject = null;
 
-      <footer>
-        <div id="about">Status: Updating</div>
-        <div id="powered-by"><a class="powered-by" href="">Mount Hood, Oregon / Circadian Rythmn</a></div>
-        <div id="clock"></div>
-      </footer> 
-    </main>
-  </div>
+    function showProject(projectName) {
+      mediaEmpty.hidden = true;
+      mediaSets.forEach(set => {
+        set.classList.toggle('is-visible', set.dataset.media === projectName);
+      });
+      projectEntries.forEach(entry => {
+        entry.classList.toggle('is-active', entry.dataset.project === projectName);
+      });
+      document.getElementById('project-media').scrollTop = 0;
+    }
 
-  <script>async function loadLatestSnapshots() {
-  try {
-    const response = await fetch('http://159.203.187.16:8080/');
-    const html = await response.text();
+    function clearProject() {
+      mediaSets.forEach(set => set.classList.remove('is-visible'));
+      projectEntries.forEach(entry => entry.classList.remove('is-active'));
+      mediaEmpty.hidden = false;
+    }
 
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(html, 'text/html');
-    const imgs = Array.from(doc.querySelectorAll('img'))
-      .map(img => img.getAttribute('src'))
-      .filter(src => src && src.endsWith('.jpg'))
-      .slice(0, 7);
+    function setProjectsOpen(open) {
+      projectsOpen = open;
+      siteShell.classList.toggle('projects-open', open);
+      projectsColumn.setAttribute('aria-hidden', String(!open));
+      projectsToggle.setAttribute('aria-expanded', String(open));
+      if (!open) {
+        lockedProject = null;
+        clearProject();
+      }
+    }
 
-    const gallery = document.getElementById('snapshot-gallery');
-    gallery.innerHTML = imgs
-      .map(src => `
-        
-          <img src="http://159.203.187.16:8080${src}" 
-               style="width:10rem;height:auto;border-radius:2px; ">
-        </div>`)
-      .join('');
-  } catch (err) {
-    document.getElementById('snapshot-gallery').innerHTML = '<p style="color:red;">Failed to load snapshots.</p>';
-    console.error('❌ Failed to load snapshots:', err);
-  }
-}
+    projectsToggle.addEventListener('click', () => setProjectsOpen(!projectsOpen));
 
-loadLatestSnapshots();
+    projectEntries.forEach(entry => {
+      const projectName = entry.dataset.project;
 
-</script>
+      entry.addEventListener('mouseenter', () => {
+        if (!lockedProject) showProject(projectName);
+      });
 
-  <script type='text/javascript' src='config.js'></script>
+      entry.addEventListener('mouseleave', () => {
+        if (!lockedProject) clearProject();
+      });
+
+      entry.addEventListener('focus', () => {
+        if (!lockedProject) showProject(projectName);
+      });
+
+      entry.addEventListener('click', () => {
+        if (lockedProject === projectName) {
+          lockedProject = null;
+          clearProject();
+        } else {
+          lockedProject = projectName;
+          showProject(projectName);
+        }
+      });
+
+      entry.addEventListener('keydown', event => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          entry.click();
+        }
+      });
+    });
+
+    educationToggle.addEventListener('click', () => {
+      education.classList.toggle('is-visible');
+    });
+  </script>
+
+  <!-- Keep your existing config.js + script.js so the webcam refresh, weather, footer gradient, and clock can continue working. -->
+  <script type="text/javascript" src="config.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

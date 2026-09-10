@@ -292,12 +292,32 @@ document.addEventListener("DOMContentLoaded", function () {
   //   imgThreeImage.style.height = 'auto';
   // }
 
-  if (headerTitle) {
-    headerTitle.addEventListener("click", () => {
-      education.style.display = education.style.display === "block" ? "none" : "block";
-      // webcamImage.src = newImageSrc;
-    });
-  }
+if (headerTitle) {
+  headerTitle.addEventListener("click", () => {
+
+    // If projects are open, return to home
+    if (isProjectsVisible) {
+      isProjectsVisible = false;
+      isImgOneProjectOpen = false;
+
+      selectedProjects.style.color = "black";
+      selectedProjects.classList.remove("is-active");
+      selectedProjects.textContent = "Selected Projects";
+
+      projectList.style.display = "none";
+      webcamTopRight.style.display = "none";
+      webcamContainer.style.display = "block";
+      imageGrid.style.display = "none";
+      workTopRight.style.display = "none";
+
+      return;
+    }
+
+    // On home page, KÜERBIS still toggles Education
+    education.style.display =
+      education.style.display === "block" ? "none" : "block";
+  });
+}
 
   // headerTitle.addEventListener('mouseenter', () => {
   //     webcamImage.src = newImageSrc;
@@ -308,31 +328,28 @@ document.addEventListener("DOMContentLoaded", function () {
   //   });
 
   if (selectedProjects) {
-    selectedProjects.addEventListener("click", () => {
-      if (isImgOneProjectOpen) {
-        isImgOneProjectOpen = false;
-        imageGrid.style.display = 'none';
-        // imgOne.style.display = 'block';
-        // imgTwo.style.display = 'none';
-        // imgThree.style.display = 'none';
-        // imgFour.style.display = 'none';
-        // imgFive.style.display = 'none';
-        // imgSix.style.display = 'none';
-        projectList.style.display = 'block';
-        selectedProjects.textContent = "Selected Projects";
-      }
-     
-      isProjectsVisible = !isProjectsVisible;
-      selectedProjects.style.color = isProjectsVisible ? "blue" : "black";
-      projectList.style.display = isProjectsVisible ? "block" : "none";
-      webcamTopRight.style.display = isProjectsVisible ? "block" : "none";
-      webcamContainer.style.display = isProjectsVisible ? "none" : "block";
-      imageGrid.style.display = isProjectsVisible ? "flex" : "none";
-      // imgOneList.style.display = "none";
-      // imgTwoList.style.display = "none";
-      workTopRight.style.display = "none";
-    });
-  }
+  selectedProjects.addEventListener("click", () => {
+    if (isImgOneProjectOpen) {
+      isImgOneProjectOpen = false;
+      imageGrid.style.display = "none";
+      projectList.style.display = "block";
+      selectedProjects.textContent = "Selected Projects";
+    }
+
+    // Open projects view
+    isProjectsVisible = true;
+
+    // Keep Selected Projects blue while projects are open
+    selectedProjects.style.color = "blue";
+    selectedProjects.classList.add("is-active");
+
+    projectList.style.display = "block";
+    webcamTopRight.style.display = "block";
+    webcamContainer.style.display = "none";
+    imageGrid.style.display = "flex";
+    workTopRight.style.display = "none";
+  });
+}
 
   listOne.addEventListener("mouseenter", () => {
     imgOne.style.display = "block";
