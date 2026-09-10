@@ -21,9 +21,8 @@
       </p>
 
       <p>
-        From Portland, OR to New York City, Jake Kuerbis is a designer currently attending Parsons School of Design.
-        <br><br>
-        Currently exploring the influence of human activity on natural spaces and the implementation of food to create visual identities through design. Reach out on
+        From Portland, OR to New York City, Jake Kuerbis is a multidisciplinary designer
+        currently exploring the influence of human activity on natural spaces and the implementation of an interest in food to create visual identities through design. Reach out on
         <a class="highlight-blue" href="https://www.instagram.com/jake.kuerbis/" target="_blank" rel="noopener noreferrer">insta</a>
         or <a class="highlight-blue" href="mailto:jjkuerbis@me.com">email</a>.
         <br><br>
@@ -77,6 +76,8 @@
       </div>
     </section>
 
+<section id="mobile-projects" class="mobile-projects"></section>
+
     <div id="global-container" class="home-webcam">
       <a href="description.html">
         <div id="webcam-container">
@@ -93,89 +94,7 @@
     </footer>
   </main>
 
-  <script>
-    const siteShell = document.getElementById('site-shell');
-    const projectsToggle = document.getElementById('projects-toggle');
-    const projectsColumn = document.getElementById('projects-column');
-    const projectEntries = [...document.querySelectorAll('.project-entry')];
-    const mediaSets = [...document.querySelectorAll('.media-set')];
-    const mediaEmpty = document.getElementById('project-media-empty');
-    const educationToggle = document.getElementById('education-toggle');
-    const education = document.getElementById('education');
-
-    let projectsOpen = false;
-    let lockedProject = null;
-
-    function showProject(projectName) {
-      mediaEmpty.hidden = true;
-      mediaSets.forEach(set => {
-        set.classList.toggle('is-visible', set.dataset.media === projectName);
-      });
-      projectEntries.forEach(entry => {
-        entry.classList.toggle('is-active', entry.dataset.project === projectName);
-      });
-      document.getElementById('project-media').scrollTop = 0;
-    }
-
-    function clearProject() {
-      mediaSets.forEach(set => set.classList.remove('is-visible'));
-      projectEntries.forEach(entry => entry.classList.remove('is-active'));
-      mediaEmpty.hidden = false;
-    }
-
-    function setProjectsOpen(open) {
-      projectsOpen = open;
-      siteShell.classList.toggle('projects-open', open);
-      projectsColumn.setAttribute('aria-hidden', String(!open));
-      projectsToggle.setAttribute('aria-expanded', String(open));
-      if (!open) {
-        lockedProject = null;
-        clearProject();
-      }
-    }
-
-    projectsToggle.addEventListener('click', () => setProjectsOpen(!projectsOpen));
-
-    projectEntries.forEach(entry => {
-      const projectName = entry.dataset.project;
-
-      entry.addEventListener('mouseenter', () => {
-        if (!lockedProject) showProject(projectName);
-      });
-
-      entry.addEventListener('mouseleave', () => {
-        if (!lockedProject) clearProject();
-      });
-
-      entry.addEventListener('focus', () => {
-        if (!lockedProject) showProject(projectName);
-      });
-
-      entry.addEventListener('click', () => {
-        if (lockedProject === projectName) {
-          lockedProject = null;
-          clearProject();
-        } else {
-          lockedProject = projectName;
-          showProject(projectName);
-        }
-      });
-
-      entry.addEventListener('keydown', event => {
-        if (event.key === 'Enter' || event.key === ' ') {
-          event.preventDefault();
-          entry.click();
-        }
-      });
-    });
-
-    educationToggle.addEventListener('click', () => {
-      education.classList.toggle('is-visible');
-    });
-  </script>
-
-  <!-- Keep your existing config.js + script.js so the webcam refresh, weather, footer gradient, and clock can continue working. -->
   <script type="text/javascript" src="config.js"></script>
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

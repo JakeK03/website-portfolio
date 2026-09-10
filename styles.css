@@ -24,8 +24,8 @@ body {
 body {
   overflow: hidden;
   font-family: DiatypeRegular, Arial, sans-serif;
-  font-size: 16px;
-  line-height: normal;
+  font-size: 15px;
+  line-height: 16.5px;
   color: #000;
   background: #fff;
 }
@@ -256,81 +256,162 @@ footer a,
   color: var(--blue);
 }
 
+#webcam-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 350px;
+  max-width: none;
+  transform: translate(-50%, -50%);
+}
+
+#webcam {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+footer {
+  min-height: 34px;
+  height: auto;
+  padding: 0 var(--page-pad);
+}
+
+/* -----------------------------------------
+   MOBILE PROJECT LAYOUT
+----------------------------------------- */
+
+.mobile-projects {
+  display: none;
+}
+
+
 @media (max-width: 800px) {
+
   body {
     overflow-y: auto;
+    overflow-x: hidden;
   }
 
   .site-shell,
   .projects-open.site-shell {
     display: block;
+    width: 100%;
     height: auto;
     min-height: 100vh;
     padding-bottom: 60px;
   }
 
-  .column {
+  .column-left {
     width: 100%;
     height: auto;
     overflow: visible;
   }
 
-  .column-left {
-    min-height: 0;
-  }
 
+  /* Hide desktop project interface */
   .column-middle,
   .column-right {
-    display: none;
-    opacity: 1;
-    visibility: visible;
+    display: none !important;
   }
 
-  .projects-open .column-middle,
-  .projects-open .column-right {
+
+  /* Mobile slideshow only appears after
+     Selected Projects is clicked */
+  .mobile-projects {
+    display: none;
+    width: 100%;
+  }
+
+  .projects-open .mobile-projects {
     display: block;
   }
 
-  .project-entry,
-  .column-left > p {
-    max-width: none;
+
+  .mobile-project {
+    width: 100%;
+    margin-bottom: 50px;
   }
 
-  .home-webcam {
+ .mobile-project-title {
+    padding: var(--page-pad);
+    font-weight: 400;
+    text-decoration: underline;
+  }
+
+ .mobile-project-image-wrap {
     position: relative;
-    inset: auto;
-    padding: 30px 16px 80px;
+    width: calc(100% - (var(--page-pad) * 2));
+    margin-left: var(--page-pad);
+    margin-right: var(--page-pad);
+    user-select: none;
+  }
+
+   .mobile-project-image {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .mobile-project-prev,
+  .mobile-project-next {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    z-index: 2;
+  }
+
+  .mobile-project-prev {
+    left: 0;
+    cursor: w-resize;
+  }
+
+  .mobile-project-next {
+    right: 0;
+    cursor: e-resize;
+  }
+
+  .mobile-project-counter {
+    padding: 3px var(--page-pad) 0;
+  }
+
+  .mobile-project-description {
+    padding: var(--page-pad);
+  }
+
+
+  /* Webcam home state */
+
+  .home-webcam {
+    position: fixed;
+    inset: 0;
+    padding: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .home-webcam a {
+    pointer-events: auto;
   }
 
   #webcam-container {
-    position: relative;
-    top: auto;
-    left: auto;
-    transform: none;
-    width: min(100%, 630px);
-    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 250px;
+    max-width: none;
+    margin: 0;
+    transform: translate(-50%, -50%);
   }
 
-footer {
-  min-height: 44px;
-  height: auto;
-  padding: 5px 10px;
-}
 
-  #powered-by {
-    position: static;
-    transform: none;
-    width: 44%;
-    text-align: center;
-    white-space: normal;
-  }
-
-  #about,
-  #clock {
-    width: 28%;
-  }
-
-  #clock {
-    text-align: right;
+  footer {
+    min-height: 44px;
+    height: auto;
+    padding: 5px var(--page-pad);
   }
 }
