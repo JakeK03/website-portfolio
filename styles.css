@@ -81,6 +81,16 @@ a { color: var(--blue); }
   margin-bottom: 16px;
 }
 
+.header-title {
+  display: inline-block;
+  margin-bottom: 2px;
+  font: inherit;
+  font-weight: 400;
+  line-height: inherit;
+  color: #000;
+  text-decoration: underline;
+}
+
 .header-title,
 .selected-projects { color: #000; }
 

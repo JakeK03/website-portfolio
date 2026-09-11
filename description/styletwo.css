@@ -26,6 +26,7 @@ a, p { font: inherit; }
 a { color: var(--blue); }
 .underline { text-decoration: underline; }
 
+
 .description-shell {
   width: 100vw;
   height: calc(100vh - var(--footer-height));
@@ -51,8 +52,10 @@ a { color: var(--blue); }
 
 .header-title {
   display: inline-block;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   font: inherit;
+  font-weight: 400;
+  line-height: inherit;
   color: #000;
   text-decoration: underline;
 }
