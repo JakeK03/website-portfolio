@@ -173,23 +173,41 @@ a { color: var(--blue); }
 
 .home-webcam {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 28.5%;
+  width: 71.5%;
+  height: calc(100vh - var(--footer-height));
   z-index: 1;
   pointer-events: none;
 }
-.home-webcam a { pointer-events: auto; }
+
+.home-webcam a {
+  pointer-events: auto;
+}
 
 #webcam-container {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 350px;
+
+  /* middle third of the 71.5% right-hand area */
+  top: var(--page-pad);
+  left: 33.333333%;
+
+  width: 33.333333%;
   max-width: none;
-  transform: translate(-50%, -50%);
+
+  /* no centering transform */
+  transform: none;
 }
 
-#webcam { display: block; width: 100%; height: auto; }
-.projects-open .home-webcam { display: none; }
+#webcam {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.projects-open .home-webcam {
+  display: none;
+}
 
 footer {
   position: fixed;
