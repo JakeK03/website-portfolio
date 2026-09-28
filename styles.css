@@ -1,6 +1,6 @@
 @font-face {
   font-family: DiatypeRegular;
-  src: url(font_library/ABCDiatype-Regular-Trial.woff2);
+  src: url("/font_library/ABCDiatype-Regular-Trial.woff2")
 }
 
 * {
@@ -10,7 +10,7 @@
 }
 
 :root {
-  --page-pad: 6px;
+  --page-pad: 8px;
   --footer-height: 34px;
   --blue: #0000ff;
 }
@@ -24,7 +24,7 @@ body {
 body {
   overflow: hidden;
   font-family: DiatypeRegular, Arial, sans-serif;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 16.5px;
   color: #000;
   background: #fff;
@@ -42,12 +42,28 @@ a { color: var(--blue); }
 .text-button {
   appearance: none;
   -webkit-appearance: none;
+
+  display: inline;
   border: 0;
+  border-radius: 0;
   padding: 0;
+  margin: 0;
+
   background: transparent;
+
+  font-family: DiatypeRegular, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 16.5px;
+  letter-spacing: normal;
+
   color: inherit;
   text-align: left;
   text-decoration: underline;
+  text-decoration-thickness: auto;
+  text-underline-offset: auto;
+
   cursor: pointer;
 }
 
