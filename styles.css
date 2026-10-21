@@ -204,14 +204,14 @@ a { color: var(--blue); }
 #webcam-container {
   position: absolute;
 
-  /* middle third of the 71.5% right-hand area */
+  
   top: var(--page-pad);
   left: 33.333333%;
 
   width: 33.333333%;
   max-width: none;
 
-  /* no centering transform */
+ 
   transform: none;
 }
 
@@ -399,11 +399,7 @@ footer a,
 }
 
 
-/* -------------------------------------------------
-   Progressive project-media loading
-   Tiny generated placeholders are blurred until the
-   optimized responsive image has finished downloading.
-   ------------------------------------------------- */
+
 .progressive-media {
   filter: blur(14px);
   transform: scale(1.015);
@@ -433,23 +429,17 @@ footer a,
 }
 
 
-/* -------------------------------------------------
-   Active navigation/project blink
-   - Selected Projects blinks blue ↔ grey until a project is clicked.
-   - Once a project is clicked, Selected Projects stays blue and only
-     the clicked project's title blinks.
-   ------------------------------------------------- */
 .selected-projects.is-active {
   animation: selected-projects-blink 1s steps(1, end) infinite;
 }
 
-/* Stop the Selected Projects blink as soon as a project is locked. */
+
 .project-selected .selected-projects.is-active {
   animation: none;
   color: var(--blue);
 }
 
-/* Only the title of the clicked/locked project blinks. */
+
 .project-selected .project-entry.is-active h2 {
   animation: active-project-blink 1s steps(1, end) infinite;
 }
