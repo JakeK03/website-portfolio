@@ -2,9 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const MOBILE_QUERY = "(max-width: 800px)";
   const mobileMedia = window.matchMedia(MOBILE_QUERY);
 
-  // -------------------------------------------------
-  // Shared weather / footer state
-  // -------------------------------------------------
+  //footer shared weatherrrr
   const temperatureApiKey =
     typeof config !== "undefined" && config.MY_KEY ? config.MY_KEY : "";
 
@@ -22,8 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let sunset = null;
 
   // -------------------------------------------------
-  // Main page: Selected Projects
-  // -------------------------------------------------
+  // Main page slected projects
   const siteShell = document.getElementById("site-shell");
   const projectsToggle = document.getElementById("projects-toggle");
   const projectsColumn = document.getElementById("projects-column");
@@ -42,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function markMediaLoaded(img) {
     if (!img) return;
 
-    // cached image can already be complete by the time we attach the listener
+  
     if (img.complete && img.naturalWidth > 0 && !img.dataset.src) {
       requestAnimationFrame(() => img.classList.add("is-loaded"));
       return;
@@ -58,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function hydrateImage(img) {
     if (!img || img.dataset.hydrated === "true") return;
 
-    // Listen before swapping away from the tiny blur placeholder.
+
     img.addEventListener(
       "load",
       () => requestAnimationFrame(() => img.classList.add("is-loaded")),
@@ -197,7 +194,7 @@ document.addEventListener("DOMContentLoaded", () => {
           displayImage.classList.add("progressive-media");
           displayImage.style.display = "block";
 
-          // Wait a frame so the tiny placeholder can paint first.
+          
           requestAnimationFrame(() => {
             displayImage.addEventListener(
               "load",
@@ -336,9 +333,8 @@ document.addEventListener("DOMContentLoaded", () => {
     mobileMedia.addListener(handleLayoutChange);
   }
 
-  // -------------------------------------------------
+ 
   // Description page: View All snapshot archive
-  // -------------------------------------------------
   const snapshotArchive = document.getElementById("snapshot-archive");
   const snapshotToggle = document.getElementById("snapshot-toggle");
   const liveSnapshot = document.getElementById("live-snapshot");
@@ -433,7 +429,7 @@ document.addEventListener("DOMContentLoaded", () => {
       snapshotToggle.classList.toggle("is-active", willOpen);
       snapshotToggle.setAttribute("aria-expanded", String(willOpen));
 
-      // Keep the wording as "View All"; blue indicates the open state.
+      
       snapshotToggle.textContent =
       willOpen ? "Hide All" : "View All";
     });
@@ -452,9 +448,9 @@ document.addEventListener("DOMContentLoaded", () => {
     setInterval(refreshDescriptionWebcam, 60000);
   }
 
-  // -------------------------------------------------
+
   // Weather / footer / homepage webcam
-  // -------------------------------------------------
+
   function fetchTemperature() {
     if (!temperatureApiKey) return;
 
