@@ -1,6 +1,6 @@
 @font-face {
   font-family: DiatypeRegular;
-  src: url("/font_library/ABCDiatype-Regular-Trial.woff2")
+  src: url("/font_library/ABCArealTrial-Regular.otf")
 }
 
 * {
@@ -10,7 +10,7 @@
 }
 
 :root {
-  --page-pad: 8px;
+  --page-pad: 10px;
   --footer-height: 34px;
   --blue: #0000ff;
 }
@@ -257,6 +257,42 @@ footer a,
 ::selection { color: var(--blue); }
 .mobile-projects { display: none; }
 
+@media (min-width:801px){
+.home-webcam {
+  position: fixed;
+  top: 0;
+  left: 28.5%;
+  width: 47em;
+  height: auto;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.home-webcam a {
+  pointer-events: auto;
+}
+
+#webcam-container {
+  position: absolute;
+
+  
+  top: var(--page-pad);
+  left: 33.333333%;
+
+  width: 33.333333%;
+  max-width: none;
+
+ 
+  transform: none;
+}
+
+#webcam {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+}
+
 @media (max-width: 800px) {
   body {
     overflow-x: hidden;
@@ -347,7 +383,7 @@ footer a,
   #webcam-container {
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 70%;
     width: 250px;
     max-width: none;
     margin: 0;

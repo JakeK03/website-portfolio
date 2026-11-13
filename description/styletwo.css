@@ -1,6 +1,6 @@
 @font-face {
   font-family: DiatypeRegular;
-  src: url("/font_library/ABCDiatype-Regular-Trial.woff2")
+  src: urll("/font_library/ABCArealTrial-Regular.otf")
 }
 
 * {
@@ -263,5 +263,35 @@ footer a, #about, #clock, #powered-by { color: #fff; }
     min-width: 0;
     text-align: center;
     white-space: normal;
+  }
+}
+
+/* Desktop archive: 6 large, 24 medium (4 rows), then small */
+@media (min-width: 801px) {
+  .snapshot-archive.is-visible {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 0;
+  }
+
+  .snapshot-archive > img {
+    display: block;
+    width: 100%;
+    height: auto;
+    min-width: 0;
+  }
+
+  .snapshot-archive > img:nth-child(-n+6) {
+    grid-column: span 4;
+  }
+
+
+  .snapshot-archive > img:nth-child(n+7):nth-child(-n+30) {
+    grid-column: span 2;
+  }
+
+
+  .snapshot-archive > img:nth-child(n+31) {
+    grid-column: span 1;
   }
 }
