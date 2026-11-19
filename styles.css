@@ -235,6 +235,20 @@ footer {
   background: #1245ff;
 }
 
+footer:hover #about,
+footer:hover #clock,
+footer:hover #powered-by {
+  visibility: hidden;
+}
+
+body:has(footer:hover) .webcam-info-overlay,
+body:has(.webcam-info-overlay:hover) .webcam-info-overlay {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition-delay: 100ms;
+}
+
 footer a,
 #about,
 #clock,
@@ -259,7 +273,7 @@ footer a,
   justify-content: center;
 
   /* padding: 20px; */
-  background: #000;
+  background: transparent;
   color: #fff;
 
   font: inherit;
@@ -523,7 +537,7 @@ body.view-description { overflow: hidden; }
 #description-view .snapshot-archive.is-visible { display:grid; }
 #description-view .snapshot-archive > img { display:block; width:100%; height:auto; min-width:0; }
 /* Shared footer hover explanation: interactive link, stays visible while hovered */
-.webcam-info-overlay { position:absolute; inset:0; z-index:10; display:flex; align-items:center; justify-content:center; padding:12px; background:#000; color:#fff; font:inherit; text-align:center; line-height:1.2; text-decoration:none; opacity:0; visibility:hidden; pointer-events:none; transition:opacity 150ms ease,visibility 50ms ease; }
+.webcam-info-overlay { position:absolute; inset:0; z-index:10; display:flex; align-items:center; justify-content:center; padding:12px; background:transparent; color:#fff; font:inherit; text-align:center; line-height:1.2; text-decoration:none; opacity:0; visibility:hidden; pointer-events:none; transition:opacity 150ms ease,visibility 50ms ease; }
 body:has(footer:hover) .webcam-info-overlay, body:has(.webcam-info-overlay:hover) .webcam-info-overlay { opacity:1; visibility:visible; pointer-events:auto; transition-delay:100ms; }
 .webcam-info-overlay:hover { color:#fff; text-decoration:underline; }
 @media (min-width:701px) {
