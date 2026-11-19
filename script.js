@@ -431,7 +431,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       
       snapshotToggle.textContent =
-      willOpen ? "Hide All" : "View All";
+      "View All";
     });
   }
 
@@ -654,4 +654,20 @@ document.addEventListener("DOMContentLoaded", () => {
   setInterval(fetchTemperature, 300000);
   setInterval(updateBackgroundColor, 1000);
   setInterval(fetchSunTimes, 60 * 60 * 1000);
+
+  // Single-page navigation. Hash URLs work with GitHub Pages on refresh.
+  const descriptionView = document.getElementById("description-view");
+  const mainView = document.getElementById("site-shell");
+  function applyView() {
+    const isDescription = window.location.hash === "#description";
+    document.body.classList.toggle("view-description", isDescription);
+    if (descriptionView) descriptionView.hidden = !isDescription;
+    if (mainView) mainView.hidden = isDescription;
+    document.title = isDescription ? "Jake Kuerbis — Circadian Rhythm" : "Jake Kuerbis";
+    window.scrollTo(0, 0);
+    if (isDescription && typeof refreshDescriptionWebcam === "function") refreshDescriptionWebcam();
+  }
+  window.addEventListener("hashchange", applyView);
+  applyView();
+
 });

@@ -254,43 +254,65 @@ footer a,
   white-space: nowrap;
 }
 
+.webcam-info-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* padding: 20px; */
+  background: #000;
+  color: #fff;
+
+  font: inherit;
+  text-align: center;
+  line-height: 1.2;
+
+  opacity: 0;
+  visibility: hidden;
+  
+
+  transition: opacity 150ms ease, visibility 50ms ease;
+}
+
+
+body:has(footer:hover) .webcam-info-overlay {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 100ms;
+}
+
 ::selection { color: var(--blue); }
 .mobile-projects { display: none; }
 
-@media (min-width:801px){
-.home-webcam {
-  position: fixed;
-  top: 0;
-  left: 28.5%;
-  width: 47em;
-  height: auto;
-  z-index: 1;
-  pointer-events: none;
-}
+@media (min-width: 801px) {
 
-.home-webcam a {
-  pointer-events: auto;
-}
+  .home-webcam {
+    position: fixed;
+    top: 0;
+    left: 28.5%;
+    width: 71.5%;
+    height: calc(100vh - var(--footer-height));
+    padding: var(--page-pad);
+    z-index: 1;
+    pointer-events: none;
+  }
 
-#webcam-container {
-  position: absolute;
+  .home-webcam a { pointer-events: auto; }
 
-  
-  top: var(--page-pad);
-  left: 33.333333%;
+  #webcam-container {
+    position: absolute;
+    top: var(--page-pad);
+    left: calc(var(--page-pad) + (100% - 2 * var(--page-pad)) / 3);
+    width: calc((100% - 2 * var(--page-pad)) / 3);
+    max-width: none;
+    transform: none;
+  }
 
-  width: 33.333333%;
-  max-width: none;
-
- 
-  transform: none;
-}
-
-#webcam {
-  display: block;
-  width: 100%;
-  height: auto;
-}
+  #webcam { display: block; width: 100%; height: auto; }
 }
 
 @media (max-width: 800px) {
@@ -507,3 +529,58 @@ footer a,
     color: var(--blue);
   }
 }
+
+
+/* Shared single-page description view */
+/* Unified Circadian Rhythm view: shared font, footer, and typography. */
+[hidden] { display: none !important; }
+body.view-description .site-shell { display: none !important; }
+body:not(.view-description) #description-view { display: none !important; }
+body.view-description #description-view { display: grid; }
+body.view-description { overflow: hidden; }
+#description-view { width:100vw; height:calc(100vh - var(--footer-height)); grid-template-columns:28.5% 71.5%; }
+#description-view .description-left, #description-view .snapshot-column { min-width:0; height:calc(100vh - var(--footer-height)); padding:var(--page-pad); overflow-y:auto; overflow-x:hidden; scrollbar-width:none; }
+#description-view .description-left::-webkit-scrollbar, #description-view .snapshot-column::-webkit-scrollbar { display:none; }
+#description-view .description-left { grid-column:1; }
+#description-view .snapshot-column { grid-column:2; }
+#description-view .header-title { display:inline-block; margin-bottom:18px; font:inherit; font-weight:400; color:#000; text-decoration:underline; }
+#description-view .header-title:hover { color:var(--blue); }
+#description-view .description-text { width:auto; padding:0; margin:0; color:#000; }
+#description-view .snapshot-grid { width:100%; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:0; align-items:start; }
+#description-view .snapshot { display:block; width:100%; height:auto; margin:0; }
+#description-view .snapshot-featured { grid-column:2; }
+#description-view .snapshot-toggle { appearance:none; border:0; padding:0; margin-top:16px; background:transparent; font:inherit; color:#000; text-align:left; text-decoration:underline; cursor:pointer; }
+#description-view .snapshot-toggle:hover, #description-view .snapshot-toggle:focus-visible, #description-view .snapshot-toggle.is-active { color:var(--blue); outline:none; }
+#description-view .snapshot-archive { display:none; grid-column:1/-1; width:100%; gap:0; }
+#description-view .snapshot-archive.is-visible { display:grid; }
+#description-view .snapshot-archive > img { display:block; width:100%; height:auto; min-width:0; }
+/* Shared footer hover explanation: interactive link, stays visible while hovered */
+.webcam-info-overlay { position:absolute; inset:0; z-index:10; display:flex; align-items:center; justify-content:center; padding:12px; background:#000; color:#fff; font:inherit; text-align:center; line-height:1.2; text-decoration:none; opacity:0; visibility:hidden; pointer-events:none; transition:opacity 150ms ease,visibility 50ms ease; }
+body:has(footer:hover) .webcam-info-overlay, body:has(.webcam-info-overlay:hover) .webcam-info-overlay { opacity:1; visibility:visible; pointer-events:auto; transition-delay:100ms; }
+.webcam-info-overlay:hover { color:#fff; text-decoration:underline; }
+@media (min-width:801px) {
+  #description-view .snapshot-archive.is-visible { grid-template-columns:repeat(12,minmax(0,1fr)); }
+  #description-view .snapshot-archive > img:nth-child(-n+6) { grid-column:span 4; }
+  #description-view .snapshot-archive > img:nth-child(n+7):nth-child(-n+30) { grid-column:span 2; }
+  #description-view .snapshot-archive > img:nth-child(n+31) { grid-column:span 1; }
+}
+@media (max-width:800px) {
+  body.view-description { overflow-x:hidden; overflow-y:auto; }
+  body.view-description #description-view { display:block; width:100%; height:auto; min-height:100dvh; padding-bottom:calc(92px + env(safe-area-inset-bottom)); }
+  #description-view .description-left, #description-view .snapshot-column { display:block; width:100%; height:auto; overflow:visible; padding:var(--page-pad); }
+  #description-view .snapshot-column { margin-top:18px; }
+  #description-view .snapshot-grid { grid-template-columns:1fr; gap:6px; }
+  #description-view .snapshot-featured { grid-column:auto; }
+  #description-view .snapshot-archive.is-visible { grid-template-columns:1fr; gap:6px; }
+  #description-view .snapshot-archive > img { grid-column:auto !important; }
+}
+
+/* Keep the mobile home webcam centered in the full viewport. */
+@media (max-width:800px) {
+  .home-webcam { left:0; width:100%; height:100dvh; }
+  #webcam-container { left:50%; }
+}
+/* The footer information is clickable only when visible. */
+.webcam-info-overlay { pointer-events:none; }
+body:has(footer:hover) .webcam-info-overlay,
+body:has(.webcam-info-overlay:hover) .webcam-info-overlay { pointer-events:auto; }
