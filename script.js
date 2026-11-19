@@ -336,7 +336,6 @@ document.addEventListener("DOMContentLoaded", () => {
  
   // Description page: View All snapshot archive
   const snapshotArchive = document.getElementById("snapshot-archive");
-  const snapshotToggle = document.getElementById("snapshot-toggle");
   const liveSnapshot = document.getElementById("live-snapshot");
 
   const SNAPSHOT_SERVER = "https://snapshots.jakekuerbis.com";
@@ -417,23 +416,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  if (snapshotToggle && snapshotArchive) {
-    snapshotToggle.addEventListener("click", async () => {
-      const willOpen = !snapshotArchive.classList.contains("is-visible");
-
-      if (willOpen) {
-        await loadSnapshotArchive();
-      }
-
-      snapshotArchive.classList.toggle("is-visible", willOpen);
-      snapshotToggle.classList.toggle("is-active", willOpen);
-      snapshotToggle.setAttribute("aria-expanded", String(willOpen));
-
-      
-      snapshotToggle.textContent =
-      "View All";
-    });
-  }
+  // Load archived snapshots automatically without a toggle.
+  loadSnapshotArchive();
 
   function refreshDescriptionWebcam() {
     if (!liveSnapshot) return;
