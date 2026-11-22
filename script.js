@@ -357,6 +357,202 @@ document.addEventListener("DOMContentLoaded", () => {
     return `${SNAPSHOT_SERVER}/${src}`;
   }
 
+  // Filenames use UTC timestamps. Format the capture in Oregon local time,
+  // accounting for daylight saving time automatically.
+  const captureDateFormatter = new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/Los_Angeles", year: "numeric", month: "2-digit", day: "2-digit"
+  });
+  const captureTimeFormatter = new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/Los_Angeles", hour: "numeric", minute: "2-digit", hour12: true
+  });
+  function parseSnapshotCapture(src) {
+    const match = decodeURIComponent(src).match(/(\d{4})-(\d{2})-(\d{2})T(\d{2})[-:](\d{2})[-:](\d{2})(?:[-.](\d{1,3}))?Z/i);
+    if (!match) return null;
+    const stamp = `${match[1]}-${match[2]}-${match[3]}T${match[4]}:${match[5]}:${match[6]}.${(match[7] || "0").padEnd(3, "0")}Z`;
+    const date = new Date(stamp);
+    if (Number.isNaN(date.getTime())) return null;
+    const parts = Object.fromEntries(captureDateFormatter.formatToParts(date)
+      .filter(p => p.type !== "literal").map(p => [p.type, p.value]));
+    return {
+      dateKey: `${parts.year}-${parts.month}-${parts.day}`,
+      dateLabel: `${parts.month}/${parts.day}/${parts.year.slice(-2)}`,
+      timeLabel: captureTimeFormatter.format(date)
+    };
+  }
+
+  // Open-Meteo: modelled daily snowfall (cm), displayed as inches.
+  // Historical reanalysis can lag by several days; recent dates use forecast data.
+  const WEATHER_LAT = 45.3318;
+  const WEATHER_LON = -121.7119;
+  async function loadSnowfallForSnapshots(dates, records) {
+    if (!dates.size) return;
+    const sorted = [...dates].sort();
+    const results = new Map();
+    const todayParts = Object.fromEntries(captureDateFormatter.formatToParts(new Date())
+      .filter(p => p.type !== "literal").map(p => [p.type, p.value]));
+    const localToday = `${todayParts.year}-${todayParts.month}-${todayParts.day}`;
+    const todayUTC = new Date(`${localToday}T12:00:00Z`);
+    const cutoff = new Date(todayUTC.getTime() - 6 * 86400000).toISOString().slice(0, 10);
+    const base = `latitude=${WEATHER_LAT}&longitude=${WEATHER_LON}&daily=snowfall_sum&timezone=America%2FLos_Angeles`;
+    async function readWeather(url) {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error(`Weather API ${response.status}`);
+      const data = await response.json();
+      if (!data.daily?.time || !data.daily?.snowfall_sum) throw new Error("Missing snowfall data");
+      data.daily.time.forEach((day, i) => {
+        const cm = data.daily.snowfall_sum[i];
+        if (typeof cm === "number" && Number.isFinite(cm)) results.set(day, cm / 2.54);
+      });
+    }
+    const tasks = [];
+    if (sorted[0] <= cutoff) {
+      const end = sorted[sorted.length - 1] < cutoff ? sorted[sorted.length - 1] : cutoff;
+      tasks.push(readWeather(`https://archive-api.open-meteo.com/v1/archive?${base}&start_date=${sorted[0]}&end_date=${end}`));
+    }
+    if (sorted[sorted.length - 1] > cutoff) {
+      tasks.push(readWeather(`https://api.open-meteo.com/v1/forecast?${base}&past_days=7&forecast_days=1`));
+    }
+    await Promise.allSettled(tasks);
+    records.forEach(({ dateKey, snowLine }) => {
+      const inches = results.get(dateKey);
+      snowLine.textContent = Number.isFinite(inches)
+        ? `${Number(inches.toFixed(1))}” Snowfall` : "— Snowfall";
+    });
+  }
+
+  const snapshotModeToggle = document.getElementById("snapshot-mode-toggle");
+  const snapshotPagination = document.getElementById("snapshot-pagination");
+  const PAGE_SIZE = 6;
+  let allSnapshotSources = [];
+  let currentSnapshotPage = 1;
+  let snapshotImageMode = false;
+
+  const liveSnapshotCard = document.getElementById("live-snapshot-card");
+  const liveDate = document.getElementById("live-date");
+  const liveTime = document.getElementById("live-time");
+  const liveSnowfall = document.getElementById("live-snowfall");
+  async function updateLiveSnowfall() {
+    if (!liveSnowfall) return;
+    try {
+      // Same Timberline coordinates and daily snowfall metric as archived snapshots.
+      // This is today's modeled total, not an observed live snow-depth measurement.
+      const url = `https://api.open-meteo.com/v1/forecast?latitude=${WEATHER_LAT}&longitude=${WEATHER_LON}&daily=snowfall_sum&timezone=America%2FLos_Angeles&forecast_days=1`;
+      const response = await fetch(url);
+      if (!response.ok) throw new Error(`Weather API ${response.status}`);
+      const data = await response.json();
+      const cm = data.daily?.snowfall_sum?.[0];
+      liveSnowfall.textContent = typeof cm === "number" && Number.isFinite(cm)
+        ? `${Number((cm / 2.54).toFixed(1))}” Snowfall` : "— Snowfall";
+    } catch (error) {
+      liveSnowfall.textContent = "— Snowfall";
+      console.warn("Live snowfall unavailable:", error);
+    }
+  }
+  updateLiveSnowfall();
+  setInterval(updateLiveSnowfall, 60 * 60 * 1000);
+  function updateLiveSnapshotInfo() {
+    const now = new Date();
+    if (liveDate) liveDate.textContent = new Intl.DateTimeFormat("en-US", {
+      timeZone: "America/Los_Angeles", month: "numeric", day: "numeric", year: "numeric"
+    }).format(now);
+    if (liveTime) liveTime.textContent = new Intl.DateTimeFormat("en-US", {
+      timeZone: "America/Los_Angeles", hour: "numeric", minute: "2-digit", hour12: true
+    }).format(now);
+  }
+  function updateLiveSnapshotMode() {
+    liveSnapshotCard?.classList.toggle("show-image", snapshotImageMode);
+    updateLiveSnapshotInfo();
+  }
+  updateLiveSnapshotMode();
+  setInterval(updateLiveSnapshotInfo, 60000);
+
+
+  function paginationButton(label, target, disabled = false, active = false) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "snapshot-page-button" + (active ? " is-active" : "");
+    button.textContent = label;
+    button.disabled = disabled;
+    if (active) button.setAttribute("aria-current", "page");
+    if (!disabled) button.addEventListener("click", () => {
+      currentSnapshotPage = target;
+      renderSnapshotArchive();
+    });
+    return button;
+  }
+
+  function renderSnapshotPagination() {
+    if (!snapshotPagination) return;
+    snapshotPagination.replaceChildren();
+    snapshotPagination.hidden = snapshotImageMode;
+    if (snapshotImageMode) return;
+
+    const total = Math.ceil(allSnapshotSources.length / PAGE_SIZE);
+    if (total < 2) return;
+    currentSnapshotPage = Math.min(Math.max(1, currentSnapshotPage), total);
+
+    const add = (label, target, disabled, description) => {
+      const button = paginationButton(label, target, disabled);
+      button.setAttribute("aria-label", description);
+      snapshotPagination.appendChild(button);
+    };
+
+    add("<", Math.max(1, currentSnapshotPage - 10), currentSnapshotPage === 1, "Back 10 weeks");
+    add("Backward", currentSnapshotPage + 1, currentSnapshotPage === total, "Previous week");
+    const separator = document.createElement("span");
+    separator.textContent = "/";
+    separator.setAttribute("aria-hidden", "true");
+    snapshotPagination.appendChild(separator);
+    add("Forward", currentSnapshotPage - 1, currentSnapshotPage === 1, "Next week");
+    add(">", Math.min(total, currentSnapshotPage + 10), currentSnapshotPage === total, "Forward 10 weeks");
+  }
+
+  function renderSnapshotArchive() {
+    if (!snapshotArchive) return;
+    snapshotArchive.replaceChildren();
+    snapshotArchive.classList.toggle("show-images", snapshotImageMode);
+    snapshotArchive.classList.toggle("text-page", !snapshotImageMode);
+    const sources = snapshotImageMode ? allSnapshotSources :
+      allSnapshotSources.slice((currentSnapshotPage - 1) * PAGE_SIZE, currentSnapshotPage * PAGE_SIZE);
+    const dates = new Set();
+    const records = [];
+    sources.forEach((src) => {
+      const capture = parseSnapshotCapture(src);
+      const wrapper = document.createElement("div");
+      wrapper.className = "snapshot-item";
+      const img = document.createElement("img");
+      img.className = "snapshot";
+      img.alt = "Mount Hood sunset capture";
+      img.loading = "lazy";
+      img.src = snapshotUrl(src);
+      const metrics = document.createElement("div");
+      metrics.className = "snapshot-metrics";
+      const dateLine = document.createElement("span");
+      const timeLine = document.createElement("span");
+      const snowLine = document.createElement("span");
+      dateLine.textContent = capture ? capture.dateLabel : "Date unavailable";
+      timeLine.textContent = capture ? capture.timeLabel : "Time unavailable";
+      snowLine.textContent = "— Snowfall";
+      metrics.append(dateLine, timeLine, snowLine);
+      wrapper.append(img, metrics);
+      snapshotArchive.appendChild(wrapper);
+      if (capture && !snapshotImageMode) {
+        dates.add(capture.dateKey);
+        records.push({dateKey: capture.dateKey, snowLine});
+      }
+    });
+    if (records.length) loadSnowfallForSnapshots(dates, records);
+    renderSnapshotPagination();
+  }
+
+  snapshotModeToggle?.addEventListener("click", () => {
+    snapshotImageMode = !snapshotImageMode;
+    snapshotModeToggle.textContent = snapshotImageMode ? "View Text" : "View Snapshots";
+    snapshotModeToggle.setAttribute("aria-pressed", String(snapshotImageMode));
+    updateLiveSnapshotMode();
+    renderSnapshotArchive();
+  });
+
   async function loadSnapshotArchive() {
     if (!snapshotArchive || snapshotArchiveLoaded || snapshotArchiveLoading) {
       return;
@@ -392,23 +588,11 @@ document.addEventListener("DOMContentLoaded", () => {
           );
         });
 
-      snapshots = [...new Set(snapshots)].sort((a, b) =>
-        b.localeCompare(a)
-      );
-
-      snapshotArchive.innerHTML = "";
-
-      snapshots.forEach((src) => {
-        const img = document.createElement("img");
-        img.className = "snapshot";
-        img.alt = "Mount Hood sunset capture";
-        img.loading = "lazy";
-        img.src = snapshotUrl(src);
-        snapshotArchive.appendChild(img);
-      });
-
+      allSnapshotSources = [...new Set(snapshots)].sort((a, b) => b.localeCompare(a));
+      currentSnapshotPage = 1;
+      renderSnapshotArchive();
       snapshotArchiveLoaded = true;
-      console.log(`Snapshots loaded: ${snapshots.length}`);
+      console.log(`Snapshots loaded: ${allSnapshotSources.length}`);
     } catch (error) {
       console.error("Failed to load snapshot archive:", error);
     } finally {

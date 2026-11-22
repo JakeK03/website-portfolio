@@ -134,11 +134,20 @@
       The gradient footer changes color every 15 minutes before and after a sunrise and sunset at Government Camp, OR.
       
     </p>
+<div class="archive-controls">
+<button type="button" id="snapshot-mode-toggle" class="text-button snapshot-mode-toggle" aria-pressed="false">View Snapshots</button>
+<nav id="snapshot-pagination" class="snapshot-pagination" aria-label="Archive pages"></nav>
+</div>
 </section>
 <!-- RIGHT column -->
 <section class="snapshot-column">
 <div class="snapshot-grid" id="snapshot-grid">
-<img alt="Live Mount Hood webcam" class="snapshot snapshot-featured" id="live-snapshot" src="https://www.timberlinelodge.com/snowcameras//palmerbottom.jpg" title="The gradient footer changes color every 15 minutes before and after a sunrise and sunset at Government Camp, OR."/>
+<div class="snapshot-featured live-snapshot-card" id="live-snapshot-card">
+<img alt="Live Mount Hood webcam" class="snapshot" id="live-snapshot" src="https://www.timberlinelodge.com/snowcameras//palmerbottom.jpg" title="The gradient footer changes color every 15 minutes before and after a sunrise and sunset at Government Camp, OR."/>
+<div class="live-snapshot-metrics" id="live-snapshot-metrics" aria-label="Current time at Mount Hood">
+<span id="live-date"></span><span id="live-time"></span><span id="live-snowfall">— Snowfall</span>
+</div>
+</div>
 <div class="snapshot-archive" id="snapshot-archive"></div>
 </div>
 </section>
