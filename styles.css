@@ -499,8 +499,6 @@ body:has(footer:hover) .webcam-info-overlay {
 }
 
 
-/* Shared single-page description view */
-/* Unified Circadian Rhythm view: shared font, footer, and typography. */
 [hidden] { display: none !important; }
 body.view-description .site-shell { display: none !important; }
 body:not(.view-description) #description-view { display: none !important; }
@@ -522,7 +520,7 @@ body.view-description { overflow: hidden; }
 #description-view .snapshot-archive { display:grid; grid-column:1/-1; width:100%; gap:0; }
 #description-view .snapshot-archive.is-visible { display:grid; }
 #description-view .snapshot-archive .snapshot { display:block; width:100%; height:auto; min-width:0; }
-/* Shared footer hover explanation: interactive link, stays visible while hovered */
+
 .webcam-info-overlay { position:absolute; inset:0; z-index:10; display:flex; align-items:center; justify-content:center; padding:12px; background:transparent; color:#fff; font:inherit; text-align:center; line-height:1.2; text-decoration:none; opacity:0; visibility:hidden; pointer-events:none; transition:opacity 150ms ease,visibility 50ms ease; }
 body:has(footer:hover) .webcam-info-overlay, body:has(.webcam-info-overlay:hover) .webcam-info-overlay { opacity:1; visibility:visible; pointer-events:auto; transition-delay:0ms; }
 .webcam-info-overlay:hover { color:#fff; text-decoration:underline; }
@@ -543,17 +541,17 @@ body:has(footer:hover) .webcam-info-overlay, body:has(.webcam-info-overlay:hover
   #description-view .snapshot-archive > .snapshot-item { grid-column:auto !important; }
 }
 
-/* Keep the mobile home webcam centered in the full viewport. */
+
 @media (max-width:800px) {
   .home-webcam { left:0; width:100%; height:100dvh; }
   #webcam-container { left:50%; }
 }
-/* The footer information is clickable only when visible. */
+
 .webcam-info-overlay { pointer-events:none; }
 body:has(footer:hover) .webcam-info-overlay,
 body:has(.webcam-info-overlay:hover) .webcam-info-overlay { pointer-events:auto; }
 
-/* Circadian Rhythm: seven most recent sunsets, text-first */
+
 #description-view .snapshot-mode-toggle {
   display: block;
   margin: 0 0 12px auto;
@@ -596,13 +594,13 @@ body:has(.webcam-info-overlay:hover) .webcam-info-overlay { pointer-events:auto;
 #description-view .snapshot-archive.show-images .snapshot-metrics {
   display: none;
 }
-/* The seventh image keeps the same size as the first six. */
+
 @media (min-width: 701px) {
   #description-view .snapshot-archive > .snapshot-item:nth-child(7) {
     grid-column: span 4;
   }
 }
-/* Prevent metrics from spilling into neighboring cards on narrow screens. */
+
 @media (max-width: 1100px) and (min-width: 701px) {
   #description-view .snapshot-metrics {
     font-size: min(36px, 2.7vw);
@@ -612,7 +610,7 @@ body:has(.webcam-info-overlay:hover) .webcam-info-overlay { pointer-events:auto;
   #description-view .snapshot-metrics { font-size: 36px; }
 }
 
-/* Weekly archive navigation: single-step and ten-week jumps */
+
 #description-view .archive-controls { margin-top: 16px; }
 #description-view .snapshot-mode-toggle { display: inline-block; margin: 0 0 12px 0; }
 #description-view .snapshot-pagination {
@@ -631,7 +629,7 @@ body:has(.webcam-info-overlay:hover) .webcam-info-overlay { pointer-events:auto;
 #description-view .snapshot-page-button:disabled { opacity: .35; cursor: default; }
 #description-view .snapshot-page-button:not(:disabled):hover { color: var(--blue); }
 #description-view .snapshot-page-dots { text-align: center; }
-/* Text view has six full-size records; image view restores original size tiers. */
+
 @media (min-width: 701px) {
   #description-view .snapshot-archive.text-page { grid-template-columns: repeat(3,minmax(0,1fr)); }
   #description-view .snapshot-archive.text-page > .snapshot-item { grid-column: span 1 !important; }
@@ -648,14 +646,14 @@ body:has(.webcam-info-overlay:hover) .webcam-info-overlay { pointer-events:auto;
   #description-view .snapshot-pagination { column-gap: 9px; font-size: 14px; }
 }
 
-/* Underline the one-week navigation controls only. */
+
 #description-view .snapshot-page-button[aria-label="Previous week"],
 #description-view .snapshot-page-button[aria-label="Next week"] {
   text-decoration: underline;
 }
 
 
-/* Live webcam follows the archive's Text / Snapshots toggle. */
+
 #description-view .live-snapshot-card {
   position: relative;
   aspect-ratio: 1.5;
@@ -688,8 +686,7 @@ body:has(.webcam-info-overlay:hover) .webcam-info-overlay { pointer-events:auto;
   #description-view .live-snapshot-metrics { font-size: min(36px, 2.7vw); }
 }
 
-/* In Text mode, hovering over any record temporarily reveals its photograph.
-   Moving away restores the date, time and snowfall without changing modes. */
+
 @media (hover: hover) and (pointer: fine) {
   #description-view .snapshot-archive.text-page .snapshot-item:hover > .snapshot {
     display: block;
@@ -709,8 +706,7 @@ body:has(.webcam-info-overlay:hover) .webcam-info-overlay { pointer-events:auto;
   }
 }
 
-/* When the footer explanation is revealed, hide the three normal footer labels.
-   Keep the explanation transparent so the circadian gradient remains visible. */
+
 footer:hover > #about,
 footer:hover > #powered-by,
 footer:hover > #clock,

@@ -357,8 +357,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return `${SNAPSHOT_SERVER}/${src}`;
   }
 
-  // Filenames use UTC timestamps. Format the capture in Oregon local time,
-  // accounting for daylight saving time automatically.
+
   const captureDateFormatter = new Intl.DateTimeFormat("en-US", {
     timeZone: "America/Los_Angeles", year: "numeric", month: "2-digit", day: "2-digit"
   });
@@ -380,8 +379,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   }
 
-  // Open-Meteo: modelled daily snowfall (cm), displayed as inches.
-  // Historical reanalysis can lag by several days; recent dates use forecast data.
+
   const WEATHER_LAT = 45.3318;
   const WEATHER_LON = -121.7119;
   async function loadSnowfallForSnapshots(dates, records) {
@@ -600,7 +598,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Load archived snapshots automatically without a toggle.
+
   loadSnapshotArchive();
 
   function refreshDescriptionWebcam() {
@@ -823,7 +821,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setInterval(updateBackgroundColor, 1000);
   setInterval(fetchSunTimes, 60 * 60 * 1000);
 
-  // Single-page navigation. Hash URLs work with GitHub Pages on refresh.
+
   const descriptionView = document.getElementById("description-view");
   const mainView = document.getElementById("site-shell");
   function applyView() {
