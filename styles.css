@@ -724,3 +724,10 @@ footer:focus-within > .webcam-info-overlay {
   visibility: visible;
   pointer-events: auto;
 }
+
+@media (max-width: 800px) {
+  #description-view .snapshot-metrics,
+  #description-view .live-snapshot-metrics {
+    font-size: 52px;
+  }
+}
